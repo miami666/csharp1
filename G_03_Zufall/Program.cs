@@ -12,6 +12,11 @@ namespace G_03_Zufall
     {
         static void Main(string[] args)
         {
+            // Einfuehren Zufallsgenerators
+            Random zufallsGenerator = new Random();
+            Console.WriteLine("eine erste Zufallszahl zwischen 0 und 4 Mrd: " + zufallsGenerator.Next());
+
+            Console.ReadKey();
         }
     }
 }
