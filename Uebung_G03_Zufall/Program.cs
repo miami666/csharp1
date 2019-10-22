@@ -40,7 +40,7 @@ namespace Uebung_G03_Zufall
                 {
                     zwei++;
                 }
-                else if (randNr==3)
+                else 
                 {
                     drei++;
                 }
