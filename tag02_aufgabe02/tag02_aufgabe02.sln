@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tag02_aufgabe02", "tag02_aufgabe02.csproj", "{1C859449-AFC3-44B2-B217-CB14A2B2FB82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tag02_aufgabe01", "..\tag02_aufgabe01\tag02_aufgabe01.csproj", "{CA4CCB67-1362-440C-90C3-7579EB6B8C73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C859449-AFC3-44B2-B217-CB14A2B2FB82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C859449-AFC3-44B2-B217-CB14A2B2FB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C859449-AFC3-44B2-B217-CB14A2B2FB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C859449-AFC3-44B2-B217-CB14A2B2FB82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4CCB67-1362-440C-90C3-7579EB6B8C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4CCB67-1362-440C-90C3-7579EB6B8C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4CCB67-1362-440C-90C3-7579EB6B8C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4CCB67-1362-440C-90C3-7579EB6B8C73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11B92D90-D8A6-4516-B4F9-6DAE9EF8C3A6}
+	EndGlobalSection
+EndGlobal

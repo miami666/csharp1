@@ -46,10 +46,12 @@ namespace Uebung_G03_Zufall
                 }
             }
             double res1 = ((double)eins / (double)maximum);
+            double res2 = ((double)zwei / (double)maximum) * 100;
+            double res3 = ((double)drei / (double)maximum);
 
             Console.WriteLine("1: " +res1.ToString("P"));
-            Console.WriteLine("2: " + ((double)zwei / (double)maximum) * 100 + "%" );
-            Console.WriteLine("3: " + ((double)drei / (double)maximum) * 100 + "%");
+            Console.WriteLine("2: " + Math.Round(res2,2) + " %" );
+            Console.WriteLine("3: " +res3.ToString("P"));
             Console.ReadKey();
         }
     }
