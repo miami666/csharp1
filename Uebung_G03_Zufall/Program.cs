@@ -46,8 +46,6 @@ namespace Uebung_G03_Zufall
                 }
             }
            
-            //int pro2 = (res2 / 3000000) * 100;
-            //int pro3 = (res3 / 3000000) * 100;
 
             Console.WriteLine("1: " + ((double)eins / (double)maximum) * 100 +"%" );
             Console.WriteLine("2: " + ((double)zwei / (double)maximum) * 100 + "%");
