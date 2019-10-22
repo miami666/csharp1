@@ -41,6 +41,25 @@ namespace G_03_Zufall
             } while (zufallszahl != 5);
             //Uwaga: Bei Zufahlszahl !=6 in der Abbruchbedingung würde eine Endlosschleife entstehen, weil Obergrenze explizit des zweiten Parameters zufallsGenerator.Next(1,6)
 
+            //Auslosen einer Zufallszahl  Double zw. selbstgewählten Grenzen
+            double untereGrenze = 2.5;
+            double obereGrenze = 11.3;
+            double zufDouble;
+
+            /*
+             * 1.Teillösung: Wenn ich zu allen ausgelosten Zahlen immer untereGrenze addiere, dann ist der kleinste Wert nicht mehr 0 sondern 0+untere Grenze,in diesem Fall also 2.5
+             * 2.Teillösung: wenn ich alle ausgelosten Zahlen mit dem Faktor(obereGrenze-untereGrenze) multipliziere, dann verbreitere ich die möglichen Lösungen
+             */
+            zufDouble = (obereGrenze - untereGrenze) * zufallsGenerator.NextDouble() + untereGrenze;
+            Console.WriteLine("Eine Zufallszahl zwischen {0} und {1}: {2}", untereGrenze, obereGrenze, zufDouble);
+
+            //nur in der Ausgabe runden
+            Console.WriteLine($"{zufDouble:F2}");
+            //um den Zufallswert auf eine Fließkommazahl mit bestimmter Anzahl von Nachkommastellen zu begrenzen
+            //verwenden wir die round Methode aus der Math Klasse
+            zufDouble = Math.Round(zufDouble, 2);
+            Console.WriteLine(zufDouble);
+
             Console.ReadKey();
         }
     }
