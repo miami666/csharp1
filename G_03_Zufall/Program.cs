@@ -39,6 +39,7 @@ namespace G_03_Zufall
                 zufallszahl = zufallsGenerator.Next(1, 6);
                 Console.WriteLine("Ergebnis: " + zufallszahl);
             } while (zufallszahl != 5);
+            //Uwaga: Bei Zufahlszahl !=6 in der Abbruchbedingung würde eine Endlosschleife entstehen, weil Obergrenze explizit des zweiten Parameters zufallsGenerator.Next(1,6)
 
             Console.ReadKey();
         }
