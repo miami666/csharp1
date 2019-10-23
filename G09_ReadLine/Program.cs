@@ -49,6 +49,7 @@ namespace G09_ReadLine
             Console.WriteLine("control double:"+d);
             d.ToString("F1");
             Console.WriteLine("to string: "+d);
+            
 
             //Try Parse
             Console.WriteLine("Zahl eingeben die mit Try Parse ausgegeben wird");
