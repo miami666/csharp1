@@ -28,6 +28,25 @@ namespace G_12_Parse_2
             string s3 = "6";
             string s4 = "null";
             string s5 = "palimpalim";
+            bool running = true;
+
+            while (running)
+            {
+                if (int.TryParse(s1, out int _))
+                {
+                    Console.WriteLine("Parsen von string s1 zu integer hat funktioniert");
+                    Console.WriteLine(s1);
+                    running = false;
+                }
+                else
+                {
+                    Console.WriteLine("Fehler beim Parsen von string s1 zu integer");
+                    Console.WriteLine("\nneuer Parse Versuch startet");
+                }
+                Console.WriteLine("Hit any key to Brexit");
+                Console.ReadKey();
+
+            }
 
         }
     }
