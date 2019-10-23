@@ -98,6 +98,7 @@ namespace tag03_aufgaben
                 else Console.WriteLine("nicht 00 neue Eingabe");             
             }
 
+
             Console.WriteLine("geschafft die ersten beiden Nachkommastellen sind 00");
             Console.ReadKey();
         }
