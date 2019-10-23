@@ -1,3 +1,3 @@
 # csharp_1
 
-C# Code-Beispiele auf Grundlage der integralen Windows Komponente .NET Framework
+.NET Framework basierte C# Visual Studio Projekte und Beispiele  
