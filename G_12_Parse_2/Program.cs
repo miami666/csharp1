@@ -60,7 +60,7 @@ namespace G_12_Parse_2
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true); //true here mean we won't output the key to the console, just cleaner in my opinion.
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
-                        running = true;
+                        running = false;
                     }
 
                 }
