@@ -41,13 +41,12 @@ namespace G_12_Parse_2
                 else
                 {
                     Console.WriteLine("Fehler beim Parsen von string s1 zu integer");
-                    Console.WriteLine("\nneuer Parse Versuch startet");
+                    Console.WriteLine("\nHit any key to restart");
+                    Console.ReadKey();
                 }
-                Console.WriteLine("Hit any key to Brexit");
-                Console.ReadKey();
-
             }
-
+            Console.WriteLine("Hit any key to Brexit");
+            Console.ReadKey();
         }
     }
 }
