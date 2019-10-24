@@ -28,52 +28,40 @@ namespace G_12_Parse_4
 {
     class Program
     {
-
         static void Main(string[] args)
-
         {
-
             bool running = true;
-
             while (running)
             {
-
                 string[] stringArray = new string[5];
                 for (int i = 0; i < stringArray.Length; i++)
                 {
                     Console.WriteLine("Eingabe: ", i);
-                    stringArray[i] = Console.ReadLine();
-                   
-
+                    stringArray[i] = Console.ReadLine();                 
                 }
                 string result2 = ConvertStringArrayToStringJoin(stringArray);
                 Console.WriteLine(result2);
                 if (int.TryParse(result2, out int zahl))
                 {
                     Console.WriteLine("TryParse des Schlüssels erfolgreich");
-
                     Console.WriteLine("\nSchlüssel benutzen? \nEnter Taste für Brexit");
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                     if (keyInfo.Key == ConsoleKey.Enter)
                     {
                         running = false;
                     }
-
                     if (zahl == 12345)
                     {
                         Console.WriteLine("Tür wird geöffnet!");
                         Console.ReadKey();
                         running = false;
-
                     }
                     else
                     {
                         Console.WriteLine("Du kommst hier nisch rein!");
                         Console.ReadKey();
                         running = false;
-                    }
-                    
-
+                    }                
                 }
                 else
                 {
@@ -84,21 +72,14 @@ namespace G_12_Parse_4
                     {
                         running = false;
                     }
-
                 }
-
-
-
             }
             Console.ReadKey();
         }
         static string ConvertStringArrayToStringJoin(string[] array)
         {
-
             string result = string.Join("", array);
             return result;
         }
-
     }
-
 }
