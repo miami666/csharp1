@@ -40,7 +40,7 @@ namespace G_12_Parse_4
                     stringArray[i] = Console.ReadLine();                 
                 }
                 string result2 = ConvertStringArrayToStringJoin(stringArray);
-                Console.WriteLine(result2);
+                //Console.WriteLine(result2);
                 if (int.TryParse(result2, out int zahl))
                 {
                     Console.WriteLine("TryParse des Schlüssels erfolgreich");
