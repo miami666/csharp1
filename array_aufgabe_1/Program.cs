@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 /*
 
-Schreiben Sie bitte ein C#-Programm, das 
+Schreiben Sie bitte ein C#-Programm, das
 a) in einer Endlosschleife den User zu Beginn jeden Durchlaufs fragt, ob er eine  ...
 	(1) Übersetzung, oder
-	(2) Monatsnummer wünscht 
+	(2) Monatsnummer wünscht
 
 b) bei Eingabe von (1) einen deutschen Monatsnamen abfragt und die englische Übersetzung ausgibt
 c) bei Eingabe von (2) einen deutschen Monatsnamen abfragt und die Monatsnummer ausgibt (Januar=1, ...)
 d) bei Fehleingaben (Auswahl ungleich 1 und 2 / nicht-existenter deutscher Monatsname) eine entsprechende Fehlermeldung ausgibt
 
 Bemerkung:
-Versuchen Sie die Aufgabe bitte zunächst durch zwei 1-dimensionale String-Arrays zu lösen. 
+Versuchen Sie die Aufgabe bitte zunächst durch zwei 1-dimensionale String-Arrays zu lösen.
 */
 
 namespace array_aufgabe_1
@@ -26,7 +26,7 @@ namespace array_aufgabe_1
         static void Main(string[] args)
         {
             int zahl = 0;
-            bool running = true;
+            //bool running = true; wird nie benutz
             do
             {
                 Console.WriteLine("(1) Übersetzung\t(2) Monatsnummer");
@@ -52,20 +52,19 @@ namespace array_aufgabe_1
                 { "november", "11"},
                 { "dezember", "12"},
 };
-          
+
                         foreach (var monat in monate)
                         {
-                            if (monatEingabe.ToLower().Contains(monat.Key))
+                            if (monatEingabe.ToLower() == monat.Key)
                             {
-                                string ergMonat = monat.Value;
-                                Console.WriteLine(ergMonat);
+                                Console.WriteLine(monat.Value);
+				break;
                             }
                         }
                 }
                 else if(zahl==1) {
-                    string monatEingabe;
                     Console.WriteLine("Monat eingeben: ");
-                    monatEingabe = Console.ReadLine();
+                    string monatEingabe = Console.ReadLine();
 
                     Dictionary<string, string> monate = new Dictionary<string, string>()
 {
@@ -84,13 +83,13 @@ namespace array_aufgabe_1
 };
                         foreach (var monat in monate)
                         {
-                            if (monatEingabe.ToLower().Contains(monat.Key))
+                            if (monatEingabe.ToLower() == monat.Key)
                             {
-                                string ergMonat = monat.Value;
-                                Console.WriteLine(ergMonat);
+                                Console.WriteLine(monat.Value);
+				break;
                             }
                         }
-                         
+
                 }
                 else
                 {
