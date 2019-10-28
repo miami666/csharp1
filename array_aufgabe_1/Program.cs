@@ -55,17 +55,16 @@ namespace array_aufgabe_1
           
                         foreach (var monat in monate)
                         {
-                            if (monatEingabe.ToLower().Contains(monat.Key))
+                            if (monatEingabe.ToLower() == monat.Key))
                             {
-                                string ergMonat = monat.Value;
-                                Console.WriteLine(ergMonat);
+                                Console.WriteLine(monat.Value);   
+				break;
                             }
                         }
                 }
                 else if(zahl==1) {
-                    string monatEingabe;
                     Console.WriteLine("Monat eingeben: ");
-                    monatEingabe = Console.ReadLine();
+                    string monatEingabe = Console.ReadLine();
 
                     Dictionary<string, string> monate = new Dictionary<string, string>()
 {
@@ -84,10 +83,10 @@ namespace array_aufgabe_1
 };
                         foreach (var monat in monate)
                         {
-                            if (monatEingabe.ToLower().Contains(monat.Key))
+                            if (monatEingabe.ToLower() == monat.Key)
                             {
-                                string ergMonat = monat.Value;
-                                Console.WriteLine(ergMonat);
+                                Console.WriteLine(monat.Value);
+				break;
                             }
                         }
                          
