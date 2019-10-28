@@ -37,7 +37,7 @@ namespace callbyreference
             {
                 Console.WriteLine($"{user.Vorname}, {user.Nachname},{user.vn}");
             }
-            Console.WriteLine();
+            //Console.WriteLine();
         }
         public  void VnUsers()
         {
@@ -57,6 +57,7 @@ namespace callbyreference
                 var such = Console.ReadLine();
                 ref var user = ref bc.GetUserByNachname(such);
                 if (user != null)
+                    Console.WriteLine(user.Nachname);
                  
                     user = new User { Vorname = "MUschi", Nachname = "Glas"  };
                 bc.ListUsers();
