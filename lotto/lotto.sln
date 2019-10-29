@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lotto", "lotto.csproj", "{BEC5A4C8-1E0C-4BA7-ACB8-E91CC5095689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "array_aufgabe_2", "..\array_aufgabe_2\array_aufgabe_2.csproj", "{4E4BCD58-8F02-446D-A79F-2F8F4B416ED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEC5A4C8-1E0C-4BA7-ACB8-E91CC5095689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC5A4C8-1E0C-4BA7-ACB8-E91CC5095689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC5A4C8-1E0C-4BA7-ACB8-E91CC5095689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC5A4C8-1E0C-4BA7-ACB8-E91CC5095689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4BCD58-8F02-446D-A79F-2F8F4B416ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4BCD58-8F02-446D-A79F-2F8F4B416ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4BCD58-8F02-446D-A79F-2F8F4B416ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4BCD58-8F02-446D-A79F-2F8F4B416ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C44BE5B-4A12-4B39-86A3-465C13BC5E19}
+	EndGlobalSection
+EndGlobal
