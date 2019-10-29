@@ -96,7 +96,7 @@ namespace _3darray_aufgabe_1
                 Console.Clear();
                 Console.WriteLine("1 2 3 oder 4?");
                 inputwort = Int32.TryParse(Console.ReadLine(), out wort);
-                if (inputwort != true || wort < 1 || fach > 4)
+                if (inputwort != true || wort < 1 || wort > 4)
                 {
                     inputwort = false;
                     Console.WriteLine("Ungültig!\nDrücken Sie eine beliebige Taste, um erneut einzugeben.");

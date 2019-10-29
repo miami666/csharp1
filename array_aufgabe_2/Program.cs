@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 */
 namespace array_aufgabe_2 {
 	class Program {		
-		public static void SpieleLotto (int[] arr) {
+		public static void FuelleLottoArray(int[] arr) {
             Random rnd = new Random();
             int[] lottoZiehung = new int[6];
             int anzahl, anzLottoZiehungen = 0;
@@ -25,6 +25,7 @@ namespace array_aufgabe_2 {
 				anzahl = 0;
 				for (int i = 0; i < 6; i++) {
                     lottoZiehung[i] = rnd.Next(1, 50);
+                    
                     for (int j = 0; j < 6; j++) {
 						if (lottoZiehung[i] == arr[j]) {
 							anzahl++;
@@ -34,9 +35,12 @@ namespace array_aufgabe_2 {
 				if (anzahl == 3) { dreier++; } else if (anzahl == 4) { vierer++; } else if (anzahl == 5) { fuenfer++; }
 				anzLottoZiehungen++;
 			} while (anzahl != 6);
-			Console.WriteLine ("\nNach {0} Ziehungen hätten Sie gewonnen.\nDer Jackpot lag bei {1} Mio.", anzLottoZiehungen, rnd.Next (1000));
+            Console.WriteLine("\nZiehung aktuell");
+            foreach (int i in lottoZiehung) Console.Write(i + " ");
+            Console.WriteLine ("\nNach {0} Ziehungen hätten Sie gewonnen.\nDer Jackpot lag bei {1} Mio.", anzLottoZiehungen, rnd.Next (1000));
 			//Console.WriteLine ("Bis dahin hätten Sie {0} 3er, {1} 4er & {2} 5er gehabt", dreier, vierer, fuenfer);
 		}
+
 		static void Main () {
             int[] zahlen = new int[6];
             int zahl;
@@ -70,7 +74,7 @@ namespace array_aufgabe_2 {
             Array.Sort(zahlen);
             Console.WriteLine("\ngetippte zahlen sortiert");
             foreach (int i in zahlen) Console.Write(i + " ");
-            SpieleLotto(zahlen);
+            FuelleLottoArray(zahlen);
             Console.ReadKey();
 		}
 	}
