@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BC6FB5B-C02C-405C-ADB4-821B232D587A}</ProjectGuid>
+    <ProjectGuid>{8D9EBC72-71E0-4DC1-B081-E0D207BD210F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_3darray_aufgabe_1</RootNamespace>
-    <AssemblyName>3darray_aufgabe_1</AssemblyName>
+    <RootNamespace>array_mehrdimensional_aufgabe_1</RootNamespace>
+    <AssemblyName>array_mehrdimensional_aufgabe_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
