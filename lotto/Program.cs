@@ -79,7 +79,7 @@ namespace Lottery
             int i = 0;
             while (i == 0)
             {
-                i = r.Next(sides + 1);//Get another random number but
+                i = r.Next(sides + 1);
             } //discard zero values
             return i;
         }
