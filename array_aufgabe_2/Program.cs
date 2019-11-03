@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace array_aufgabe_2
 {
     class Program
     {
-
         public static void SpieleLotto(int[] arr)
         {
             Random rnd = new Random();
             int[] ziehung = new int[6];
             int anzahl, anzahlZiehungen = 0;
             int dreier = 0, vierer = 0, fuenfer = 0;
-
             //do
             //{
                 for (int i = 0; i < 6; i++)
@@ -29,7 +26,6 @@ namespace array_aufgabe_2
                         }
                     }
                 }
-
                 anzahl = 0;
                 for (int i = 0; i < 6; i++)
                 {
@@ -55,7 +51,6 @@ namespace array_aufgabe_2
             //Console.WriteLine("Nach {0} Ziehungen hättest du gewonnen.\nDer Jackpot lag bei {1} Mio.", anzahlZiehungen, rnd.Next(1000));
             //Console.WriteLine("Bis dahin hättest du {0} 3er, {1} 4er & {2} 5er gehabt", dreier, vierer, fuenfer);
         }
-
         static void Main(string[] args)
         {
             int[] zahlen = new int[6];
@@ -70,7 +65,6 @@ namespace array_aufgabe_2
                     Console.Clear();
                     Console.WriteLine("Geben Sie ihre {0}. Zahl ein: ", (i + 1));
                     valid = Int32.TryParse(Console.ReadLine(), out zahl);
-
                     if (valid != true                                               // Eingabe ungültig
                         || Array.Exists<int>(zahlen, element => element == zahl)    // Eingabe bereits enthalten
                         || zahl < 1 || zahl > 49)                                   // Eingabe keine Lottozahl
@@ -84,13 +78,10 @@ namespace array_aufgabe_2
                     {
                         zahlen[i] = zahl;
                     }
-
                 } while (valid != true);
             }
-
             SpieleLotto(zahlen);
             Console.ReadLine();
-
         }
     }
 }
