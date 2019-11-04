@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2CEA30B-3819-4B13-B9F8-7CF4A73A00C6}</ProjectGuid>
+    <ProjectGuid>{80F41998-6552-4E5B-93CB-4D7DF9034086}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>cipher</RootNamespace>
-    <AssemblyName>cipher</AssemblyName>
+    <RootNamespace>listen_aufgabe_3</RootNamespace>
+    <AssemblyName>listen_aufgabe_3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
