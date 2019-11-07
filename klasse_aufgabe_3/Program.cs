@@ -194,7 +194,7 @@ namespace klasse_aufgabe_3
             aliste.Add(new A_Mann() { name = "Alex", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
             aliste.Add(new A_Mann() { name = "Anton", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
             aliste.Add(new A_Mann() { name = "August", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
-            aliste.Add(afuenf);
+           
 
             //Console.WriteLine();
             foreach (A_Mann al in aliste)
