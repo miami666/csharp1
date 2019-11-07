@@ -98,7 +98,7 @@ namespace G43_aufgabe_02
         private string geheimCode;
         private double kontostand;
         private double dispo;
-        public string Ansprechpartner;
+        public BankMitarbeiter Ansprechpartner;
         public int counter = 0;
         public string GeheimCode
         {

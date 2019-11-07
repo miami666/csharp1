@@ -73,9 +73,13 @@ namespace klasse_aufgabe_3
     enum Sieger { ist_A_Mann, ist_B_Mann };
     class A_Mann
     {
-        string name;
-        int x, y;
-        bool ImSpiel;
+       public string name;
+       public int x, y;
+       public bool ImSpiel;
+        public override string ToString()
+        {
+            return "Name: " + name + "  x: " + x+" y: "+y;
+        }
         public void Jubeln()
         {
             Console.WriteLine("Ich liebe es wenn ein Plan funktioniert");
@@ -94,9 +98,13 @@ namespace klasse_aufgabe_3
     }
     class B_Mann
     {
-        string name;
-        int x, y;
-        bool ImSpiel;
+        public string name;
+        public int x, y;
+        public bool ImSpiel;
+        public override string ToString()
+        {
+            return "Name: " + name + "  x: " + x + " y: " + y;
+        }
         public void Jubeln()
         {
             Console.WriteLine("Wir B-Männer sind Siegertypen");
@@ -121,6 +129,99 @@ namespace klasse_aufgabe_3
 
         static void Main(string[] args)
         {
+            int[,] spielfeld =
+            {
+                {1,1,1,1,1,1,1,1,1,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,0,0,0,0,0,0,0,0,1 },
+                {1,1,1,1,1,1,1,1,1,1 }
+            };
+            for (int y = 0; y < spielfeld.GetLength(1); y++)
+            {
+                for (int x = 0; x < spielfeld.GetLength(0); x++)
+                {
+                    if (spielfeld[y, x] == 0)
+                    {
+                        Console.Write(" ");
+                    }
+                    else if(spielfeld[y,x]==1)
+                    {
+                        Console.Write("#");
+                    }
+                }
+                Console.WriteLine();
+
+            }
+            //const int BOARD_X = 10;
+            //const int BOARD_Y = 10;
+            //const int SPIELER = 5;
+
+            //List<int> positions = Enumerable.Range(0, BOARD_X * BOARD_Y).ToList();
+            var rnd = new Random();
+            //for (int i = 0; i < SPIELER; i++)
+            //{
+            //    int index = rnd.Next(positions.Count);
+            //    int pos = positions[index];
+            //    positions.RemoveAt(index);
+            //    int x = pos % BOARD_X, y = pos / BOARD_X;
+            //    Console.WriteLine("({0}, {1})", x, y);
+            //}
+            //List<int> possible = Enumerable.Range(0, 10).ToList();
+            //List<int> listNumbers = new List<int>();
+            //for (int i = 0; i < ; i++)
+            //{
+            //    int index = rnd.Next(0, possible.Count);
+            //    listNumbers.Add(possible[index]);
+            //    possible.RemoveAt(index);
+            //}
+
+            A_Mann aeins = new A_Mann();
+            A_Mann azwei = new A_Mann();
+            A_Mann adrei = new A_Mann();
+            A_Mann avier = new A_Mann();
+            A_Mann afuenf = new A_Mann();
+            afuenf.name = "Fred";
+            Random rand = new Random();
+            List<A_Mann> aliste = new List<A_Mann>();
+            aliste.Add(new A_Mann() { name = "Achim", x=rand.Next(0,spielfeld.GetLength(0)),y=rand.Next(0,spielfeld.GetLength(1)),ImSpiel=true });
+            aliste.Add(new A_Mann() { name = "Albert", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            aliste.Add(new A_Mann() { name = "Alex", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            aliste.Add(new A_Mann() { name = "Anton", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            aliste.Add(new A_Mann() { name = "August", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            aliste.Add(afuenf);
+
+            //Console.WriteLine();
+            foreach (A_Mann al in aliste)
+            {
+                Console.WriteLine(al);
+            }
+
+
+            List<B_Mann> bliste = new List<B_Mann>();
+            bliste.Add(new B_Mann() {name="Bert", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel=true });
+            bliste.Add(new B_Mann() {name = "Benjamin", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            bliste.Add(new B_Mann() {name = "Bjoern", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            bliste.Add(new B_Mann() {name = "Bodo", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+            bliste.Add(new B_Mann() {name = "Bruno", x = rand.Next(0, spielfeld.GetLength(0)), y = rand.Next(0, spielfeld.GetLength(1)), ImSpiel = true });
+
+            foreach (B_Mann bl in bliste)
+            {
+                Console.WriteLine(bl);
+            }
+
+
+            //A_Mann aeins = new A_Mann();
+            //A_Mann azwei = new A_Mann();
+            //A_Mann adrei = new A_Mann();
+            //A_Mann avier = new A_Mann();
+            //A_Mann afuenf = new A_Mann();
+            Console.ReadKey();
         }
     }
 }
