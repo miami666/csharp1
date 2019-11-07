@@ -158,35 +158,31 @@ namespace klasse_aufgabe_3
                 Console.WriteLine();
 
             }
-            //const int BOARD_X = 10;
-            //const int BOARD_Y = 10;
-            //const int SPIELER = 5;
+            const int BOARD_X = 10;
+            const int BOARD_Y = 10;
+            const int SPIELER = 5;
 
-            //List<int> positions = Enumerable.Range(0, BOARD_X * BOARD_Y).ToList();
+            List<int> positions = Enumerable.Range(0, BOARD_X * BOARD_Y).ToList();
             var rnd = new Random();
-            //for (int i = 0; i < SPIELER; i++)
-            //{
-            //    int index = rnd.Next(positions.Count);
-            //    int pos = positions[index];
-            //    positions.RemoveAt(index);
-            //    int x = pos % BOARD_X, y = pos / BOARD_X;
-            //    Console.WriteLine("({0}, {1})", x, y);
-            //}
+            for (int i = 0; i < SPIELER; i++)
+            {
+                int index = rnd.Next(positions.Count);
+           // Console.WriteLine(index);
+               int pos = positions[index];
+                positions.RemoveAt(index);
+               int x = pos % BOARD_X, y = pos / BOARD_X;
+                Console.WriteLine("({0}, {1})", x, y);
+            }
             //List<int> possible = Enumerable.Range(0, 10).ToList();
             //List<int> listNumbers = new List<int>();
-            //for (int i = 0; i < ; i++)
+            //for (int i = 0; i <5 ; i++)
             //{
             //    int index = rnd.Next(0, possible.Count);
             //    listNumbers.Add(possible[index]);
             //    possible.RemoveAt(index);
             //}
 
-            A_Mann aeins = new A_Mann();
-            A_Mann azwei = new A_Mann();
-            A_Mann adrei = new A_Mann();
-            A_Mann avier = new A_Mann();
-            A_Mann afuenf = new A_Mann();
-            afuenf.name = "Fred";
+
             Random rand = new Random();
             List<A_Mann> aliste = new List<A_Mann>();
             aliste.Add(new A_Mann() { name = "Achim", x=rand.Next(0,spielfeld.GetLength(0)),y=rand.Next(0,spielfeld.GetLength(1)),ImSpiel=true });

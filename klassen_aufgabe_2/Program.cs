@@ -66,5 +66,5 @@ namespace klassen_aufgabe_2
             Console.Write("\n\n\n\nEin beliebiger Tastendruck beendet das Programm ... ");
             Console.ReadKey();
         }
-    }thz
+    }f
 }

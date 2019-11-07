@@ -224,13 +224,16 @@ namespace G_43_Aufg2
             k.InhaberMail = "konto@mail.com";
             k.GeheimCode = "XYZ1247";
             k.Ansprechpartner = bm;
-            k.Einzahlen(1000000);
-            Console.WriteLine("Authorisierungscode: ");
+            Console.WriteLine("Get Kontostand: " + k.GetKontostand());
+            k.Einzahlen(100001);
+            Console.WriteLine("Get Kontostand: " + k.GetKontostand());
+            Console.WriteLine("GetDispo: " + k.GetDispo());
+            Console.WriteLine("Authorisierungscode für Dispo: ");
             eingabe = Convert.ToInt32(Console.ReadLine());
             k.SetDispo(eingabe, 20000);
-
-
-            Console.WriteLine("Get Kontostand: " + k.GetKontostand());
+            Console.WriteLine("GetDispo: " + k.GetDispo());
+            k.Abbuchen(90000, Console.ReadLine());
+             Console.WriteLine("Get Kontostand: " + k.GetKontostand());
             Console.WriteLine("GetDispo: " + k.GetDispo());
 
             Console.ReadKey();
