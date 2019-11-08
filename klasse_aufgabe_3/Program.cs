@@ -93,6 +93,7 @@ namespace klasse_aufgabe_3
     }
     class B_Mann
     {
+         Random r = new Random(Guid.NewGuid().GetHashCode());
         public string name;
         public int x, y;
         public bool ImSpiel;
@@ -118,7 +119,7 @@ namespace klasse_aufgabe_3
             }
         public void zufallsAktion(B_Mann b)
         {
-            Random r = new Random();
+           
             int actions = r.Next(0, 3);
             switch (actions)
             {
@@ -280,6 +281,7 @@ namespace klasse_aufgabe_3
                 
             }
             b1.zufallsAktion(b1);
+            b2.zufallsAktion(b2);
             foreach (B_Mann bl in bliste)
             {
                 Console.WriteLine(bl);
