@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-/*
+﻿/*
     Was zum Knobeln:
 
     Bitte erstellen Sie die Klasse 'MeinRandom' mit den folgenden Methoden:
@@ -32,35 +27,54 @@ using System.Threading.Tasks;
         3.) Ähnlich wie in ANSI C gibt es ein enges Verhältnis zwischen Character Und Integer (im Sinne der ASCII-Position)
         4.) Bei der Ausgabe eines Characters in Verbindung mit der Konkatenierung von Strings gibt es technische Probleme ... lösen Sie diese :-) 
 */
-namespace G45_aufgabe_2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace G_45_Aufg2
 {
-    class meinRandom
+    static class MeinRandom
     {
-        static Random rnd = new Random(Guid.NewGuid().GetHashCode());
+        static Random zufallsGenerator = new Random();
 
         public static int MeinNext(int min, int max)
         {
-            return rnd.Next(min, max);
+            return zufallsGenerator.Next(min, max + 1);
         }
+
         public static double MeinNextDouble(double min, double max)
         {
-            return rnd.NextDouble() * (max - min) + min;
+            return zufallsGenerator.NextDouble() * (max - min) + min;
         }
-        public static char MeinNextChar(char start, char end)
-        {           
-            return (char)rnd.Next(start, end);
+
+        public static char MeineNextChar(char startChar, char endChar)
+        {
+            return (char)zufallsGenerator.Next(startChar, endChar + 1);
         }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("10 Integer-Zufallszahlen zwischen (beiderseits einschließlich) 1 und 6:");
+            for (int i = 0; i < 10; i++) Console.Write(MeinRandom.MeinNext(1, 6) + " ");
+            Console.WriteLine();
+
+            Console.WriteLine("10 Double-Zufallszahlen zwischen (beiderseits einschließlich) 1 und 6:");
+            for (int i = 0; i < 10; i++) Console.Write(MeinRandom.MeinNext(1, 6) + " ");
+            Console.WriteLine();
+
+            Console.WriteLine("10 Zufalls-Character zwischen (beiderseits einschließlich) a und e:");
             for (int i = 0; i < 10; i++)
-                Console.WriteLine(meinRandom.MeinNextChar('a', 'h'));
-            for (int i = 0; i < 10; i++)
-                Console.WriteLine(meinRandom.MeinNext(1, 10));
-            for (int i = 0; i < 10; i++)
-                Console.WriteLine(meinRandom.MeinNextDouble(1, 10));
+            {
+                Console.Write(MeinRandom.MeineNextChar('a', 'e'));
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+
             Console.ReadKey();
         }
     }
