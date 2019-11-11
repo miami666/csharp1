@@ -89,6 +89,9 @@ namespace assoziationen_aufgabe_1
             bool gefunden = false;
             Klausur gewaehlteKlausur = null;
             Fach gewaehltesFach = null;
+            string eingabetext="";
+            int kid;
+            int fid;
 
 
             do
@@ -101,63 +104,82 @@ namespace assoziationen_aufgabe_1
 
                 switch (keyReaded.Key)
                 {
-                    case ConsoleKey.D1: //Number 1 Key
-                   
+                    case ConsoleKey.D1: //Number 1 Key                  
                         Console.WriteLine("Taste 1 wurde gedrückt");
                         Console.WriteLine("Klausur zum Fach");
-                      
-                            Console.WriteLine("Klausur Id:");
-                            int kid = Convert.ToInt32(Console.ReadLine());
+                       do {
+                             gefunden=false;
+                        do {
+                           
+                        Console.WriteLine("Klausur Id:");
+                        eingabetext=Console.ReadLine();
+                            }while(!int.TryParse(eingabetext, out kid));
+                        //int kid = Convert.ToInt32(Console.ReadLine());
                             foreach(Klausur k in Klausurenli)
-                        {
-                            if(k.id==kid)
                             {
-                                Console.WriteLine("Die Klausur mit der ID " +kid+"war im Fach  "+gewaehlteKlausur.klausurfach.bezeichnung);
+                                if(k.id==kid)
+                                {
+                                gewaehlteKlausur=k;
+                                gefunden=true;
+                                break;
+                             
+                               
+                                }
                             }
+                            if(!gefunden) 
+                        {
+                            Console.WriteLine("Es existiert keine Klausur mit dieser ID.");
+                            Console.ReadKey();
                         }
-
-                     
-                       
-                        
-                      
-
-
-
-
+                            else 
+                        {
+                             Console.WriteLine("Die Klausur mit der ID " +kid+" war im Fach  "+gewaehlteKlausur.klausurfach.bezeichnung);
+                            Console.ReadKey();
+                        }
+                            } // do1 ende
+                        while (!gefunden);
                         taste = true;
                         break;
-
                     case ConsoleKey.D2: //Number 2 Key
                         Console.WriteLine("Taste 2 wurde gedrückt");
                         Console.WriteLine("Fach zu Klausur");
-                        Console.WriteLine("Bitte Fach Id eingeben:");
-                        int id = Convert.ToInt32(Console.ReadLine());
-                        if(id==1)
+                        do 
                         {
-                            Console.WriteLine("Klausuren C#");
-                            foreach (Klausur k in f1.klausurliste)
-                            Console.WriteLine(k.id + k.note);
+                            gefunden=false;
+                            do
+                            {
+                                Console.Write("Geben Sie die Fach-ID ein:");
+                                eingabetext = Console.ReadLine();
+                            }
+                            while (!int.TryParse(eingabetext, out fid));
 
-                        }
-                        else if(id==2)
-                        {
-                            Console.WriteLine("Klausuren SQL");
-                            foreach (Klausur k in f2.klausurliste)
-                            Console.WriteLine(k.id + k.note);
-
-                        }
-                        else
-                        {
-                            Console.WriteLine("Fail!!!");
-                            break;
-                        }
+                       
                         
-
-
-
+                            foreach (Fach f in Faecherliste)
+                            {
+                                if(f.id==fid) 
+                                {
+                                    gefunden=true;
+                                    gewaehltesFach=f;
+                                    break;
+                                 }
+                            }
+                            if (!gefunden)
+                            {
+                                Console.WriteLine("Es existiert kein Fach mit dieser ID.");
+                                Console.ReadKey();
+                            }
+                            else {
+                                Console.WriteLine("Liste aller Klausuren im Fach mit der ID= " + fid + " (" + gewaehltesFach.bezeichnung+")");
+                                foreach (Klausur k in gewaehltesFach.klausurliste)
+                                    {
+                                    Console.WriteLine("ID der Klausur: " + k.id + " / Note: " + k.note);
+                                    }
+                                Console.ReadKey();
+                                }                                                                                      
+                         } while(!gefunden);
                         taste = true;
                         break;
-
                     default: //Not known key pressed
                         Console.WriteLine("falsche taste bitte nochmal");
                         taste = false;
