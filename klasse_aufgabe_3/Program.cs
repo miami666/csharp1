@@ -124,18 +124,50 @@ namespace klasse_aufgabe_3
             switch (actions)
             {
                 case 0:
-                    b.x = x - 1;//nach oben (rows)
+                    if (b.x > 0)
+                    {
+                        b.x = x - 1;//nach oben (rows)
+                    }
+                    else
+                    {
+                        b.x = x + 1;
+                    }
 
                     break;
-
                 case 1:
-                     b.x = x + 1; //nachunten (rows)
+                    if(b.x<10)
+                    {
+                        b.x = x + 1; //nachunten (rows)
+                    }
+                    else
+                    {
+                        b.x = x - 1;
+                    }
+                    
                     break;
                 case 2:
-                    b.y = y - 1; //nach oben
+                    if(b.y>0)
+                    {
+                        b.y = y - 1; //nach links
+                    }
+                    else
+                    {
+                        b.y = y + 1;
+                    }
+                   
+                    
                     break;
                 case 3:
-                    b.y = y + 1;
+                    if(b.y<10)
+                    {
+                        b.y = y + 1;
+
+                    }
+                    else
+                    {
+                        b.y = y - 1;
+                    }
+                   
                     break;
 
                 default:
@@ -282,6 +314,9 @@ namespace klasse_aufgabe_3
             }
             b1.zufallsAktion(b1);
             b2.zufallsAktion(b2);
+            b3.zufallsAktion(b3);
+            b4.zufallsAktion(b4);
+            b5.zufallsAktion(b5);
             foreach (B_Mann bl in bliste)
             {
                 Console.WriteLine(bl);
