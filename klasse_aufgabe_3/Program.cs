@@ -178,9 +178,11 @@ namespace klasse_aufgabe_3
                     break;
             }
         }
+        
     }
     class Program
     {
+        Random r = new Random(Guid.NewGuid().GetHashCode());
         static void PrintGF(List<A_Mann> a, List<B_Mann> b)
         {
             //gamefield
@@ -188,11 +190,11 @@ namespace klasse_aufgabe_3
             foreach (A_Mann al in a)
             {
                 //Console.WriteLine(al);
-                if (al.ImSpiel) { gf[al.x, al.y] = 9; }
+                if (al.ImSpiel) { gf[al.x,al.y] = 9; }
             }
             foreach (B_Mann bl in b)
             {
-                //Console.WriteLine(bl);
+                Console.WriteLine(bl);
                 if (bl.ImSpiel) { gf[bl.x, bl.y] = 8; }
             }
 
@@ -219,41 +221,12 @@ namespace klasse_aufgabe_3
             }
             Console.WriteLine("\n\n");
         }
-
-        Random r = new Random(Guid.NewGuid().GetHashCode());
         static void Main(string[] args)
         {
-            int[,] spielfeld =
-            {
-                {1,1,1,1,1,1,1,1,1,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,0,0,0,0,0,0,0,0,1 },
-                {1,1,1,1,1,1,1,1,1,1 }
-            };
-            for (int y = 0; y < spielfeld.GetLength(1); y++)
-            {
-                for (int x = 0; x < spielfeld.GetLength(0); x++)
-                {
-                    if (spielfeld[y, x] == 0)
-                    {
-                        Console.Write(" ");
-                    }
-                    else if (spielfeld[y, x] == 1)
-                    {
-                        Console.Write("#");
-                    }
-                }
-                Console.WriteLine();
-            }
+            int[,] spielfeld = new int[10, 10];
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
-            var nums = Enumerable.Range(0, 10).ToArray();
-            var numsb = Enumerable.Range(0, 10).ToArray();
+            var nums = Enumerable.Range(0, 11).ToArray();
+            var numsb = Enumerable.Range(0, 11).ToArray();
             // Shuffle the array
             for (int i = 0; i < 5; ++i)
             {
@@ -279,9 +252,9 @@ namespace klasse_aufgabe_3
             // Shuffle the array
             for (int i = 0; i < 5; ++i)
             {
-                int randomIndex = rnd.Next(nums.Length);
+                int randomIndex = rnd.Next(numsb.Length);
                 int temp = numsb[randomIndex];
-                numsb[randomIndex] = nums[i];
+                numsb[randomIndex] = numsb[i];
                 numsb[i] = temp;
             }
             // Now your array is randomized and you can simply print them in order
@@ -300,6 +273,32 @@ namespace klasse_aufgabe_3
             bliste.Add(b5);
             do
             {
+                foreach (A_Mann a_1 in aliste)
+                {
+                    foreach (A_Mann a_2 in aliste)
+                    {
+                        if (!a_1.Equals(a_2))
+                        {
+                            if (a_1.x == a_2.x && a_1.y == a_2.y)
+                            {
+                                a_1.Gruessen(a_2);
+                            }
+                        }
+                    }
+                }
+                foreach (B_Mann b_1 in bliste)
+                {
+                    foreach (B_Mann b_2 in bliste)
+                    {
+                        if (!b_1.Equals(b_2))
+                        {
+                            if (b_1.x == b_2.x && b_1.y == b_2.y)
+                            {
+                                b_1.Gruessen(b_2);
+                            }
+                        }
+                    }
+                }
                 foreach (A_Mann al in aliste)
                 {
                     al.zufallsAktion(al);
@@ -314,7 +313,7 @@ namespace klasse_aufgabe_3
                     {
                         if (bl.x == al.x && bl.y == al.y)
                         {
-                            Console.WriteLine("B-mann " + bl.x + bl.y + "A_mann " + al.x + al.y);
+                            Console.WriteLine("B-mann auf " + bl.x+"," + bl.y + " kollidiert mit A_mann auf " + al.x+"," + al.y);
                             int gewinner = rnd.Next(2);
                             switch (gewinner)
                             {
@@ -338,7 +337,8 @@ namespace klasse_aufgabe_3
                         }
                     }
                 }
-
+                //PrintGF(aliste, bliste);
+                System.Threading.Thread.Sleep(1000);
             } while (aliste.Count() > 0 && bliste.Count() > 0);
             Console.ReadKey();
         }
