@@ -202,7 +202,7 @@ namespace avsb
             }
             foreach (B bl in b)
             {
-                //Console.WriteLine(bl);
+                Console.WriteLine(bl);
                 if (bl.ImSpiel) { gf[bl.x, bl.y] = 8; }
             }
 
