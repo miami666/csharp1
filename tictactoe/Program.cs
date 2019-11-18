@@ -12,17 +12,17 @@ namespace TicTacToe
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("-----------------------");
-            Console.WriteLine("Welcome to Tic Tac Toe!");
+            Console.WriteLine("Willkommen bei Tic Tac Toe!");
             Console.WriteLine("-----------------------\n");
             Console.ResetColor();
 
             while (stillPlaying)
             {
-                Console.WriteLine("What would you like to do:");
-                Console.WriteLine("1. Start a new game");
-                Console.WriteLine("2. Quit\n");
+                Console.WriteLine("Was soll gemacht werden");
+                Console.WriteLine("1. Neues Spiel");
+                Console.WriteLine("2. Beenden\n");
 
-                Console.Write("Type a number and hit <enter>: ");
+                Console.Write("Zahl eingeben und <enter>: ");
 
                 var choice = GetUserInput("[12]");
 

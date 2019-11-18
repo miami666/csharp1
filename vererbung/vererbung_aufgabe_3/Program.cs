@@ -74,10 +74,11 @@ namespace vererbung_aufgabe_3
     }
     class PositionierteStringabfrage:PositionierteTextAusgabe
     {
+        public string input;
         public string SetzeCursorUndSchreibeDannStringAbfrage()
         {
-            Console.WriteLine(text);
-            string input = Console.ReadLine();
+            Console.Write(text);
+            input = Console.ReadLine();
             SetzeCursorSchreibe();
             return input;
 
@@ -90,14 +91,14 @@ namespace vererbung_aufgabe_3
         {
             do
             {
-                
+                x = 0;
                 SetzeCursorUndSchreibeDannStringAbfrage();
                
-                return x;
+               
                
             }
             while(!int.TryParse(SetzeCursorUndSchreibeDannStringAbfrage(), out x));
-
+            return x;
         }
 
     }
@@ -109,7 +110,9 @@ namespace vererbung_aufgabe_3
             a.text = "Geben Sie bitte eine ganze Zahl ein: ";
             a.x = 2;
             a.y = 2;
-            Console.WriteLine(a.SetzeCursorUndSchreibeDannStringAbfrageDieGeparsedWird());
+           a.SetzeCursorUndSchreibeDannStringAbfrageDieGeparsedWird();
+            Console.WriteLine(a.x);
+          
             Console.ReadKey();
         }
     }

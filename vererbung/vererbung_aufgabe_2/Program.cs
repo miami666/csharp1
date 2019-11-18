@@ -38,13 +38,16 @@ namespace vererbung_aufgabe_2
     class InputInteger
     {
         int x=0, y=0, eingabeZahl;
-        string text="", eingabeString;
+        string text="", eingabeString="";
         public int Abfrage()
-        {                     
+        {
+            
             do
             {
                 Console.SetCursorPosition(x, y);
-                Console.WriteLine(text);
+                for (int i = 0; i < text.Length + eingabeString.Length; i++) Console.Write(" ");
+                Console.SetCursorPosition(x, y);
+                Console.Write(text);
                 eingabeString = Console.ReadLine();
             } while (!int.TryParse(eingabeString, out eingabeZahl));
             return eingabeZahl;
@@ -60,9 +63,9 @@ namespace vererbung_aufgabe_2
     {
         static void Main(string[] args)
         {
-            InputInteger a = new InputInteger(2, 2, "Geben sie bitte eine ganze Zahl ein: ");
+            Console.WriteLine(new InputInteger(2, 2, "Geben sie bitte eine ganze Zahl ein: ").Abfrage());
         
-            Console.WriteLine(a.Abfrage());
+         
 
             Console.ReadKey();
         }
