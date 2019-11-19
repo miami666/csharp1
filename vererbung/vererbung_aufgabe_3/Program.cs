@@ -89,16 +89,18 @@ namespace vererbung_aufgabe_3
     {
         public int SetzeCursorUndSchreibeDannStringAbfrageDieGeparsedWird()
         {
+            int zahl;
             do
             {
+               
                 x = 0;
                 SetzeCursorUndSchreibeDannStringAbfrage();
+
                
-               
-               
+
             }
-            while(!int.TryParse(SetzeCursorUndSchreibeDannStringAbfrage(), out x));
-            return x;
+            while(!int.TryParse(SetzeCursorUndSchreibeDannStringAbfrage(), out zahl));
+            return zahl;
         }
 
     }
@@ -111,7 +113,7 @@ namespace vererbung_aufgabe_3
             a.x = 2;
             a.y = 2;
            a.SetzeCursorUndSchreibeDannStringAbfrageDieGeparsedWird();
-            Console.WriteLine(a.x);
+           Console.WriteLine(a.x);
           
             Console.ReadKey();
         }

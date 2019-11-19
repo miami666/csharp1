@@ -1,0 +1,26 @@
+/*
+    Führen Sie bitte die beiden folgenden Klassen ein:
+
+    Klasse Stadt
+        Attribute: einwohnerzahl, name, istGroßstadt[bool] (alle private)
+        Properties: Einwohnerzahl(get und set), Name(get), IstGroßstadt[string](get: "Stimmt!", FALLS istGroßstadt=true, SONST "Nein!") 
+        Konstruktor: 
+            Übergabewerte: int e, string n
+            Funktion:      setzt: 
+                           - einwohnerzahl=e 
+                           - name=n
+                           - istGroßstadt=true FALLS e>=100000, SONST false
+
+    Klasse Landeshauptstadt (SUBKLASSE von Stadt!)
+        Attribute: adresse (des Landtages) 
+        Properties: Adresse(get und set)
+        Konstruktor: 
+            Übergabewerte: string a UND die Attribute des Basis-Klassen-Konstruktors
+            Funktion:      setzt adresse=a UND übergibt die entsprechenden Attribute an den Basis-Klassen-Konstruktor
+
+    Testen Sie bitte die obigen Definitionen an folgendem Programm im Main:
+    - Instanziierung der Städte Dinslaken(70000) und Wuppertal(350000)
+    - Instanziierung der Landeshauptstadt Düsseldorf(620000 / Platz des Landtags 1, 40221 Düsseldorf)
+    - Für alle drei Städte: Ausgabe von Name und Eigenschaft(Großstadt "Stimmt!" oder "Nein!")
+    - Für die Landeshauptstadt: Ausgabe der Adresse (des Landtages)               
+*/
