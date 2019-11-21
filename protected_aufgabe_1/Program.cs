@@ -65,6 +65,13 @@ namespace protected_aufgabe_1
             besitzer = b;
 
         }
+        public static void ZeigegegListe() {
+            foreach (var item in gListe)
+	{
+                Console.WriteLine(item.Name+" "+item.besitzer);
+
+	}
+        }
 
     }
     class Lebewesen:Entitaet
@@ -78,7 +85,15 @@ namespace protected_aufgabe_1
             lListe.Add(this);
 
         }
+        public static void ZeigelListe() 
+        {
+        foreach(var l in lListe) 
+        {
+        Console.WriteLine(l.Name+" "+l.geb);
+        
+        }
 
+        }
     }
     class Tier:Lebewesen
     {
@@ -90,6 +105,13 @@ namespace protected_aufgabe_1
             anzahlBeine = beine;
             tListe.Add(this);
 
+        }
+        public static void ZeigetListe()
+        {
+            foreach(var t in tListe)
+            {
+                Console.WriteLine(t.Name+" "+t.geb+" "+t.anzahlBeine);
+            }
         }
 
     }
@@ -117,7 +139,7 @@ namespace protected_aufgabe_1
     {
         static void Main(string[] args)
         {
-            Mensch hans = new Mensch("Zimmermann", "01.01.2000");
+            Mensch hans = new Mensch("Zimmermann", "01.01.200");
             Mensch.ZeigemListe();
             Console.ReadKey();
         }
