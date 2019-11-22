@@ -51,11 +51,32 @@ namespace ConsoleApp1
 
             }
         }
+        static void tcdouble(double[] arr) 
+        {
+           
+
+        }
         static void Main(string[] args)
         {
             string sLaenge, sIndex;
-            Int32 laenge, index;
+            Int32 laenge=0, index;
             bool laengeOk=false, indexOk=false;
+
+            double[] doubleArray = new double[3] { 5.2,4.4,7.1 };
+            try 
+	        {	
+                double[] doubleArray2 = new double[laenge];
+
+                doubleArray2[0] = 1.1;
+                doubleArray2[1] = 2.11;
+		
+	        }
+	        catch (Exception ed)
+	         {
+
+		   // throw;
+           Console.WriteLine(ed);
+	        }
             do
             {
                 Console.WriteLine("Eingabe slänge(string): ");
@@ -70,6 +91,7 @@ namespace ConsoleApp1
                     Console.WriteLine(e);
 
                 }
+
            
 
             } while (!laengeOk);
