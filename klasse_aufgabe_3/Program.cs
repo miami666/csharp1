@@ -338,7 +338,7 @@ namespace klasse_aufgabe_3
                     }
                 }
                 //PrintGF(aliste, bliste);
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(100);
             } while (aliste.Count() > 0 && bliste.Count() > 0);
             Console.ReadKey();
         }

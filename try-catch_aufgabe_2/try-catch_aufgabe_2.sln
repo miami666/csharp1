@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "try-catch_aufgabe_2", "try-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "..\try-catch_aufgabe_1\ConsoleApp1\ConsoleApp1.csproj", "{7E937CB7-D985-4AD9-81B0-57E03C53E92D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "virtual-override_aufgabe_1", "..\virtual-override_aufgabe_1\virtual-override_aufgabe_1.csproj", "{1EEBAAD6-20B8-489D-B9FE-DA9E70DF6BE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7E937CB7-D985-4AD9-81B0-57E03C53E92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E937CB7-D985-4AD9-81B0-57E03C53E92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E937CB7-D985-4AD9-81B0-57E03C53E92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EEBAAD6-20B8-489D-B9FE-DA9E70DF6BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EEBAAD6-20B8-489D-B9FE-DA9E70DF6BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EEBAAD6-20B8-489D-B9FE-DA9E70DF6BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EEBAAD6-20B8-489D-B9FE-DA9E70DF6BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

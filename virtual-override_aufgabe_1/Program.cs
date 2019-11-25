@@ -20,6 +20,9 @@ using System.Threading.Tasks;
     Hinweis:
         Tatsächlich ist eine Lösung möglich, in der praktisch alle Member private oder mindestens protected sind ...
         ... lediglich die Konstruktoren und die Methode zur Konsolenausgabe werden ("natürlich") public sein
+        
+shutdown -s -t 5400
+timeout /t 5300 && taskkill /F /pid 8184
 */
 namespace virtual_override_aufgabe_1
 {
