@@ -45,13 +45,14 @@ namespace Arrays
                 Console.WriteLine();
             }
             int[] arrayInt1 = new int[] { 1, 2, 3, 4, 5, 6 };
-            int[,] arrayInt2;
-            arrayInt2 = new int[,] { { 5, 4, 6 }, { 88, 99, 21 } };
+
 
             for (int row = 0; row < arrayInt1.Length; row++)  
             {
                 Console.WriteLine(arrayInt1[row]);
              }
+            int[,] arrayInt2;
+            arrayInt2 = new int[,] { { 5, 4, 6 }, { 88, 99, 21 } };
 
             for (int row = 0; row < arrayInt2.GetLength(0); row++)
             {
