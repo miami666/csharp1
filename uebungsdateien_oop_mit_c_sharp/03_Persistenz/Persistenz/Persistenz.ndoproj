@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Enhancer>
+  <Options>
+    <EnableAddIn>True</EnableAddIn>
+    <EnableEnhancer>True</EnableEnhancer>
+    <VerboseMode>False</VerboseMode>
+    <NewMapping>False</NewMapping>
+    <GenerateSQL>True</GenerateSQL>
+    <DefaultConnection>DataSource="C:\Projekte\Persistenz\Persistenz\Test.sdf"; Password=''</DefaultConnection>
+    <TargetMappingFileName>NDOMapping.xml</TargetMappingFileName>
+    <GenerateChangeEvents>False</GenerateChangeEvents>
+    <UseTimeStamps>False</UseTimeStamps>
+    <Utf8Encoding>True</Utf8Encoding>
+    <SQLScriptLanguage>SqlCe</SQLScriptLanguage>
+    <SchemaVersion>1.0</SchemaVersion>
+    <IncludeTypecodes>True</IncludeTypecodes>
+    <DatabaseOwner>
+    </DatabaseOwner>
+    <GenerateConstraints>False</GenerateConstraints>
+    <UseMsBuild>True</UseMsBuild>
+    <DropExistingElements>True</DropExistingElements>
+  </Options>
+  <ProjectDescription>
+    <BinPath>bin\Debug\Persistenz.exe</BinPath>
+    <ObjPath>obj\Debug\</ObjPath>
+    <AssemblyName />
+    <Debug>True</Debug>
+    <IsWebProject>False</IsWebProject>
+    <KeyFile />
+    <References>
+    </References>
+  </ProjectDescription>
+</Enhancer>
