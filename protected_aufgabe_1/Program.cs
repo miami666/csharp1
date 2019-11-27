@@ -71,33 +71,50 @@ namespace protected_aufgabe_1
     {
         public static List<Lebewesen> lListe = new List<Lebewesen>();
         protected string geb;
-        protected Lebewesen(string g)
+        protected string n;
+     
+        
+        protected Lebewesen(string g,string n):base()
         {
-           
+            this.n=n; 
             geb = g;
             lListe.Add(this);
 
+        }
+        public static void ZeigelListe() { 
+             Console.WriteLine("Liste aller Lebewesen: ");
+        foreach(var l in lListe) {
+                Console.WriteLine(l.n+" "+ " "+l.geb);
+                }
         }
 
     }
     class Tier:Lebewesen
     {
         public static List<Tier> tListe = new List<Tier>();
-        string anzahlBeine;
-        public Tier(string beine, string g) : base(g)
+        protected string anzahlBeine;
+        public Tier(string beine,string g,string n) : base(g,n)
         {
            
             anzahlBeine = beine;
             tListe.Add(this);
 
         }
+        public static void ZeigetListe()
+        {
+             Console.WriteLine("Liste aller Tiere: ");
+            foreach(var t in tListe)
+            {
+                Console.WriteLine(t.anzahlBeine);
+            }
+        }
 
     }
     class Mensch : Lebewesen
     {
         public static List<Mensch> mListe = new List<Mensch>();
-        string beruf;
-        public Mensch(string beruf,string g):base(g)
+        private string beruf;
+        public Mensch(string beruf,string g,string n):base(g,n)
            
         {
             this.beruf = beruf;
@@ -106,9 +123,10 @@ namespace protected_aufgabe_1
         }
         public static void ZeigemListe()
         {
+            Console.WriteLine("Liste aller Menschen: ");
             foreach(var m in mListe)
             {
-                Console.WriteLine(m.beruf+" "+m.geb);
+                Console.WriteLine(m.n+" "+m.beruf+" "+m.geb);
             }
         }
     }
@@ -117,7 +135,8 @@ namespace protected_aufgabe_1
     {
         static void Main(string[] args)
         {
-            Mensch hans = new Mensch("Zimmermann", "01.01.2000");
+            Mensch hans = new Mensch("Zimmermann", "01.01.2000", "Hans");
+            Lebewesen.ZeigelListe();
             Mensch.ZeigemListe();
             Console.ReadKey();
         }

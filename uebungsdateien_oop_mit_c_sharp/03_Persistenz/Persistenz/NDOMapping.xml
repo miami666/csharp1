@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<NDOMapping SchemaVersion="1.0">
+  <Connections>
+    <Connection ID="C0" Name="DataSource=&quot;C:\Projekte\Persistenz\Persistenz\Test.sdf&quot;; Password=''" Type="SqlCe" />
+  </Connections>
+  <Classes>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Beleg" TableName="Beleg" ConnectionId="C0" TypeCode="-1077521831">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="&lt;Datum&gt;k__BackingField">
+          <Column Name="Datum" />
+        </Field>
+        <Field Name="betrag" AccessorName="Betrag">
+          <Column Name="Betrag" />
+        </Field>
+        <Field Name="text" AccessorName="Text">
+          <Column Name="Text" />
+        </Field>
+      </Fields>
+      <Relations />
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.KmPauschale" TableName="KmPauschale" ConnectionId="C0" TypeCode="739822034">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="&lt;AnzahlKm&gt;k__BackingField" AccessorName="AnzahlKm">
+          <Column Name="AnzahlKm" />
+        </Field>
+        <Field Name="&lt;Datum&gt;k__BackingField">
+          <Column Name="Datum" />
+        </Field>
+      </Fields>
+      <Relations />
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Kostenpunkt" TableName="Unused" ConnectionId="C0">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="Unused" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="&lt;Datum&gt;k__BackingField" AccessorName="Datum">
+          <Column Name="Unused" />
+        </Field>
+      </Fields>
+      <Relations />
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Land" TableName="Land" ConnectionId="C0" TypeCode="-2112674627">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="name" AccessorName="Name">
+          <Column Name="Name" />
+        </Field>
+      </Fields>
+      <Relations />
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Mitarbeiter" TableName="Mitarbeiter" ConnectionId="C0" TypeCode="-1564222318">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="nachname" AccessorName="Nachname">
+          <Column Name="Nachname" />
+        </Field>
+        <Field Name="vorname" AccessorName="Vorname">
+          <Column Name="Vorname" />
+        </Field>
+      </Fields>
+      <Relations>
+        <Relation FieldName="reisen" AccessorName="Reisen" ReferencedTypeName="Persistenz.Reise" RelationName="">
+          <ForeignKeyColumn Name="IDMitarbeiter" />
+        </Relation>
+      </Relations>
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Reise" TableName="Reise" ConnectionId="C0" TypeCode="-1062747946">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="zweck" AccessorName="Zweck">
+          <Column Name="Zweck1" />
+        </Field>
+      </Fields>
+      <Relations>
+        <Relation FieldName="kostenpunkte" AccessorName="Kostenpunkte" ReferencedTypeName="Persistenz.Kostenpunkt" RelationName="">
+          <ForeignKeyColumn Name="IDReise" />
+          <MappingTable TableName="relKostenpunktReise" ChildForeignKeyTypeColumnName="TCKostenpunkt" ConnectionId="C0">
+            <ForeignKeyColumn Name="IDKostenpunkt" />
+          </MappingTable>
+        </Relation>
+        <Relation FieldName="land" AccessorName="Land" ReferencedTypeName="Persistenz.Land" RelationName="">
+          <ForeignKeyColumn Name="IDLand" />
+        </Relation>
+        <Relation FieldName="mitarbeiter" AccessorName="Mitarbeiter" ReferencedTypeName="Persistenz.Mitarbeiter" RelationName="">
+          <ForeignKeyColumn Name="IDMitarbeiter" />
+        </Relation>
+      </Relations>
+    </Class>
+    <Class AssemblyName="Persistenz" FullName="Persistenz.Tagespauschale" TableName="Tagespauschale" ConnectionId="C0" TypeCode="-1197460560">
+      <Oid>
+        <OidColumn AutoIncremented="True" Name="ID" AllowDbNull="False" />
+      </Oid>
+      <Fields>
+        <Field Name="&lt;Datum&gt;k__BackingField">
+          <Column Name="Datum" />
+        </Field>
+        <Field Name="&lt;StartDatum&gt;k__BackingField" AccessorName="StartDatum">
+          <Column Name="StartDatum" />
+        </Field>
+      </Fields>
+      <Relations />
+    </Class>
+  </Classes>
+</NDOMapping>

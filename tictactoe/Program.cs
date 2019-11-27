@@ -12,7 +12,7 @@ namespace TicTacToe
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("-----------------------");
-            Console.WriteLine("Willkommen bei Tic Tac Toe!");
+            Console.WriteLine("Tic Tac Toe!");
             Console.WriteLine("-----------------------\n");
             Console.ResetColor();
 
