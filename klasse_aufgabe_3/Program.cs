@@ -99,11 +99,19 @@ namespace klasse_aufgabe_3
                     {
                         a.x = x - 1;//nach oben (rows)
                     }
+                    else
+                    {
+
+                    }
                     break;
                 case 1:
-                    if (a.x < 10)
+                    if (a.x < 9)
                     {
                         a.x = x + 1; //nachunten (rows)
+                    }
+                    else
+                    {
+
                     }
                     break;
                 case 2:
@@ -111,11 +119,19 @@ namespace klasse_aufgabe_3
                     {
                         a.y = y - 1; //nach links
                     }
+                    else
+                    {
+
+                    }
                     break;
                 case 3:
-                    if (a.y < 10)
+                    if (a.y < 9)
                     {
                         a.y = y + 1;
+                    }
+                    else
+                    {
+
                     }
                     break;
             }
@@ -157,11 +173,19 @@ namespace klasse_aufgabe_3
                     {
                         b.x = x - 1;//nach oben (rows)
                     }
+                    else
+                    {
+                        b.x = x;
+                    }
                     break;
                 case 1:
-                    if (b.x < 10)
+                    if (b.x < 9)
                     {
                         b.x = x + 1; //nachunten (rows)
+                    }
+                    else
+                    {
+                        b.x = x;
                     }
                     break;
                 case 2:
@@ -169,20 +193,28 @@ namespace klasse_aufgabe_3
                     {
                         b.y = y - 1; //nach links
                     }
+                    else
+                    {
+                        b.y = y;
+                    }
                     break;
                 case 3:
-                    if (b.y < 10)
+                    if (b.y < 9)
                     {
                         b.y = y + 1;
+                    }
+                    else
+                    {
+                        b.y = y;
                     }
                     break;
             }
         }
-        
+
     }
     class Program
     {
-        Random r = new Random(Guid.NewGuid().GetHashCode());
+        Random r = new Random();
         static void PrintGF(List<A_Mann> a, List<B_Mann> b)
         {
             //gamefield
@@ -190,12 +222,12 @@ namespace klasse_aufgabe_3
             foreach (A_Mann al in a)
             {
                 //Console.WriteLine(al);
-                if (al.ImSpiel) { gf[al.x,al.y] = 9; }
+                if (al.ImSpiel) { gf[al.y, al.x] = 9; }
             }
             foreach (B_Mann bl in b)
             {
-                Console.WriteLine(bl);
-                if (bl.ImSpiel) { gf[bl.x, bl.y] = 8; }
+                //Console.WriteLine(bl);
+                if (bl.ImSpiel) { gf[bl.y, bl.x] = 8; }
             }
 
             for (int y = 0; y < 10; y++)
@@ -224,9 +256,10 @@ namespace klasse_aufgabe_3
         static void Main(string[] args)
         {
             int[,] spielfeld = new int[10, 10];
+
             Random rnd = new Random(Guid.NewGuid().GetHashCode());
-            var nums = Enumerable.Range(0, 11).ToArray();
-            var numsb = Enumerable.Range(0, 11).ToArray();
+            var nums = Enumerable.Range(0, 10).ToArray();
+            var numsb = Enumerable.Range(0, 10).ToArray();
             // Shuffle the array
             for (int i = 0; i < 5; ++i)
             {
@@ -235,14 +268,12 @@ namespace klasse_aufgabe_3
                 nums[randomIndex] = nums[i];
                 nums[i] = temp;
             }
-            // Now your array is randomized and you can simply print them in order
-            for (int i = 0; i < 5; ++i)
-                Console.WriteLine(nums[i]);
-            var a1 = new A_Mann() { name = "Achim", x = nums[0], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var a2 = new A_Mann() { name = "Albert", x = nums[1], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var a3 = new A_Mann() { name = "Alex", x = nums[2], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var a4 = new A_Mann() { name = "Anton", x = nums[3], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var a5 = new A_Mann() { name = "August", x = nums[4], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
+            // Now your     WriteLine(nums[i]);
+            var a1 = new A_Mann() { name = "Achim", x = nums[0], y = rnd.Next(0, 10), ImSpiel = true };
+            var a2 = new A_Mann() { name = "Albert", x = nums[1], y = rnd.Next(0, 10), ImSpiel = true };
+            var a3 = new A_Mann() { name = "Alex", x = nums[2], y = rnd.Next(0, 10), ImSpiel = true };
+            var a4 = new A_Mann() { name = "Anton", x = nums[3], y = rnd.Next(0, 10), ImSpiel = true };
+            var a5 = new A_Mann() { name = "August", x = nums[4], y = rnd.Next(0, 10), ImSpiel = true };
             List<A_Mann> aliste = new List<A_Mann>();
             aliste.Add(a1);
             aliste.Add(a2);
@@ -260,17 +291,29 @@ namespace klasse_aufgabe_3
             // Now your array is randomized and you can simply print them in order
             for (int i = 0; i < 5; ++i)
                 Console.WriteLine(numsb[i]);
-            var b1 = new B_Mann() { name = "Bert", x = numsb[0], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var b2 = new B_Mann() { name = "Benjamin", x = numsb[1], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var b3 = new B_Mann() { name = "Bjoern", x = numsb[2], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var b4 = new B_Mann() { name = "Bodo", x = numsb[3], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
-            var b5 = new B_Mann() { name = "Bruno", x = numsb[4], y = rnd.Next(0, spielfeld.GetLength(1)), ImSpiel = true };
+            var b1 = new B_Mann() { name = "Bert", x = numsb[0], y = rnd.Next(0, 10), ImSpiel = true };
+            var b2 = new B_Mann() { name = "Benjamin", x = numsb[1], y = rnd.Next(0, 10), ImSpiel = true };
+            var b3 = new B_Mann() { name = "Bjoern", x = numsb[2], y = rnd.Next(0, 10), ImSpiel = true };
+            var b4 = new B_Mann() { name = "Bodo", x = numsb[3], y = rnd.Next(0, 10), ImSpiel = true };
+            var b5 = new B_Mann() { name = "Bruno", x = numsb[4], y = rnd.Next(0, 10), ImSpiel = true };
             List<B_Mann> bliste = new List<B_Mann>();
             bliste.Add(b1);
             bliste.Add(b2);
             bliste.Add(b3);
             bliste.Add(b4);
             bliste.Add(b5);
+
+            for (int h = 0; h < 10; h++)
+            {
+                for (int b = 0; b < 10; b++)
+                {
+                    //  Console.SetCursorPosition(startX + b, startY + h);
+
+
+                }
+            }
+
+
             do
             {
                 foreach (A_Mann a_1 in aliste)
@@ -302,6 +345,8 @@ namespace klasse_aufgabe_3
                 foreach (A_Mann al in aliste)
                 {
                     al.zufallsAktion(al);
+                    // Console.SetCursorPosition(al.x, al.y);
+                    //Console.Write("A");
                 }
                 foreach (B_Mann bl in bliste)
                 {
@@ -309,11 +354,13 @@ namespace klasse_aufgabe_3
                 }
                 foreach (A_Mann al in aliste.ToList())
                 {
+
+
                     foreach (B_Mann bl in bliste.ToList())
                     {
                         if (bl.x == al.x && bl.y == al.y)
                         {
-                            Console.WriteLine("B-mann auf " + bl.x+"," + bl.y + " kollidiert mit A_mann auf " + al.x+"," + al.y);
+                            Console.WriteLine("B-mann auf " + bl.x + "," + bl.y + " kollidiert mit A_mann auf " + al.x + "," + al.y);
                             int gewinner = rnd.Next(2);
                             switch (gewinner)
                             {
@@ -324,6 +371,7 @@ namespace klasse_aufgabe_3
                                     bliste.Remove(bl);
                                     Console.WriteLine("A: " + aliste.Count());
                                     Console.WriteLine("B: " + bliste.Count());
+
                                     break;
                                 case (int)Sieger.ist_B_Mann:
                                     bl.Jubeln();
@@ -333,13 +381,18 @@ namespace klasse_aufgabe_3
                                     Console.WriteLine("A: " + aliste.Count());
                                     Console.WriteLine("B: " + bliste.Count());
                                     break;
+                                default:
+                                    continue;
                             }
                         }
                     }
                 }
-                //PrintGF(aliste, bliste);
-                System.Threading.Thread.Sleep(100);
+
+                PrintGF(aliste, bliste);
+                System.Threading.Thread.Sleep(500);
+
             } while (aliste.Count() > 0 && bliste.Count() > 0);
+            // PrintGF(aliste, bliste);
             Console.ReadKey();
         }
     }
