@@ -7,7 +7,7 @@ public abstract class BankKonto : IEinzahlung
     protected decimal kontostand;
     protected decimal zinsrate;
     public decimal Zinsen { get; protected set; }
-    public int zeitrauminmonaten; 
+    public int zeitrauminmonaten;
 
     public Kunde Kunde
     {
@@ -25,7 +25,7 @@ public abstract class BankKonto : IEinzahlung
         {
             if (value < 0)
             {
-                throw new ArgumentException(String.Format("Balance can not be negative: {0}", value));
+                throw new ArgumentException(String.Format("Kontostand darf nicht negativ sein {0}", value));
             }
             this.kontostand = value;
         }
@@ -38,7 +38,7 @@ public abstract class BankKonto : IEinzahlung
         {
             if (value < 0)
             {
-                throw new ArgumentException(String.Format("Balance can not be negative: {0}", value));
+                throw new ArgumentException(String.Format("Fehler {0}", value));
             }
             this.zinsrate = value;
         }
@@ -51,7 +51,7 @@ public abstract class BankKonto : IEinzahlung
         {
             if (value < 0)
             {
-                throw new ArgumentException(String.Format("Balance can not be negative: {0}", value));
+                throw new ArgumentException(String.Format("Fehler {0}", value));
             }
             this.zeitrauminmonaten = value;
         }
@@ -66,6 +66,6 @@ public abstract class BankKonto : IEinzahlung
     }
 
     public abstract decimal BerechneZinsen();
-    public abstract decimal GeldEinzahlen(decimal money);
+    public abstract decimal GeldEinzahlen(decimal moneten);
 }
 
