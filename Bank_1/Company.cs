@@ -1,13 +1,13 @@
 ﻿public class Firma : Customer
 {
-    public string CompanyName { get; set; }
+    public string FirmaName { get; set; }
     public TypeOfFirm TypeOfFirms { get; set; }
 
-    public Firma(string companyName, string address, TypeOfFirm typeFirm)
-        : base(address, TypeOfCustomer.Company)
+    public Firma(string _firmaname, string _adress, TypeOfFirm _firmatyp)
+        : base(_adress, TypeOfCustomer.Company)
     {
-        this.CompanyName = companyName;
-        this.TypeOfFirms = typeFirm;
+        this.FirmaName = _firmaname;
+        this.TypeOfFirms = _firmatyp;
     }
 }
 

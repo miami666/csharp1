@@ -1,16 +1,16 @@
 ﻿using System;
 
-class Einzahlungskonto : BankKonto, IDrawable
+class Einzahlungskonto : BankKonto, IAbhebung
 {
     // Deposit accounts are allowed to deposit and with draw money
-    public decimal DrawMoney(decimal money)
+    public decimal Geldabheben(decimal mammon)
     {
-       return this.Kontostand -= money;
+       return this.Kontostand -= mammon;
     }
 
-    public override decimal GeldEinzahlen(decimal money) 
+    public override decimal GeldEinzahlen(decimal mammon) 
     {
-        return this.Kontostand += money;
+        return this.Kontostand += mammon;
     }
 
     //Deposit accounts have no interest if their balance is positive and less than 1000.

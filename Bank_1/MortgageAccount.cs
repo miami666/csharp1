@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Hypothekenkonto : BankAccount
+public class Hypothekenkonto : BankKonto
 {
     public override decimal DepositeMoney(decimal money) 
     {
@@ -11,7 +11,7 @@ public class Hypothekenkonto : BankAccount
     * and no interest for the first 6 months for individuals. */
     public override decimal CalculateInterestAmount() 
     {
-        if (this.Customer.TypeOfCustomer == TypeOfCustomer.Company)
+        if (this.Customer.TypeOfCustomer == TypeOfCustomer.Firma)
         {
             if (this.PeriodInMonths > 12)
             {

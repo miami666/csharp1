@@ -41,19 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="BankExample.cs" />
-    <Compile Include="Company.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="DepositAccount.cs" />
-    <Compile Include="IDepositable.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="LoanAccount.cs" />
-    <Compile Include="MortgageAccount.cs" />
+    <Compile Include="BankKonto.cs" />
+    <Compile Include="BankTest.cs" />
+    <Compile Include="Darlehenskonto.cs" />
+    <Compile Include="Einzahlungskonto.cs" />
+    <Compile Include="Firma.cs" />
+    <Compile Include="HypothekenKonto.cs" />
+    <Compile Include="IAbhebung.cs" />
+    <Compile Include="IEinzahlung.cs" />
+    <Compile Include="Kunde.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeOfCustomer.cs" />
-    <Compile Include="TypeOfFirm.cs" />
+    <Compile Include="TypderFirma.cs" />
+    <Compile Include="TypdesKunden.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

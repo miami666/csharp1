@@ -1,5 +1,5 @@
-﻿public enum TypeOfCustomer
+﻿public enum TypdesKunden
 { 
     Individual,
-    Company
+    Firma
 }

@@ -1,13 +1,13 @@
-﻿public class Person : Customer
+﻿public class Person : Kunde
 {
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
+    public string Vorname { get; private set; }
+    public string Nachname { get; private set; }
 
-    public Person(string firstName, string lastName, string address)
-        : base(address, TypeOfCustomer.Individual)
+    public Person(string _vorname, string _nachname, string _adresse)
+        : base(_adresse, TypdesKunden.Individual)
     {
-        this.FirstName = firstName;
-        this.LastName = lastName;
+        this.Vorname = _vorname;
+        this.Nachname = _nachname;
     }
 }
 
