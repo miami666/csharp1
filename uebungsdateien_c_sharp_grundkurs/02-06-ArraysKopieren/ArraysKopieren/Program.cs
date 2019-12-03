@@ -14,6 +14,8 @@ namespace ArraysKopieren
             arr1.CopyTo(arr2, 5);
             for (int i = 0; i < arr2.Length; i++)
                 Console.WriteLine(arr2[i]);
+            Console.ReadKey();
+
         }
     }
 }

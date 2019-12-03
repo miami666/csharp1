@@ -19,7 +19,9 @@ namespace _02_01_Objektbeziehungen
             foreach (var kp in r.Kostenpunkte)
             {
                 Console.WriteLine($"{kp.Datum.ToShortDateString()}\t{kp.Text}\t{kp.Betrag}");
+               
             }
+            Console.ReadKey();
         }
     }
 }
