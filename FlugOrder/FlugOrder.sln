@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlugOrder", "FlugOrder.csproj", "{3B1A9C26-18B1-4320-9CC9-F4102ABA3544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReiseBuero", "..\ReiseBuero\ReiseBuero.csproj", "{B9F0C74F-6A5B-4039-BB7B-80302ED71A80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B1A9C26-18B1-4320-9CC9-F4102ABA3544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B1A9C26-18B1-4320-9CC9-F4102ABA3544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B1A9C26-18B1-4320-9CC9-F4102ABA3544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B1A9C26-18B1-4320-9CC9-F4102ABA3544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F0C74F-6A5B-4039-BB7B-80302ED71A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F0C74F-6A5B-4039-BB7B-80302ED71A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F0C74F-6A5B-4039-BB7B-80302ED71A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F0C74F-6A5B-4039-BB7B-80302ED71A80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B304D7E-374E-4CB8-BB92-A3216562BE34}
+	EndGlobalSection
+EndGlobal

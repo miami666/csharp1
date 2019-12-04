@@ -2,6 +2,11 @@
 
 namespace MaffeluDemo
 {
+    class Coordinate
+    {
+        public int X { get; set; } //Left
+        public int Y { get; set; } //Top
+    }
     class Program
     {
         const ConsoleColor HERO_COLOR = ConsoleColor.DarkBlue;
@@ -120,9 +125,5 @@ namespace MaffeluDemo
     /// <summary>
     /// Represents a map coordinate
     /// </summary>
-    class Coordinate
-    {
-        public int X { get; set; } //Left
-        public int Y { get; set; } //Top
-    }
+
 }

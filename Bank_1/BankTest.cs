@@ -28,9 +28,9 @@ namespace Bank
         static void Main()
         {
             //dummy-kunden erstellen
-            Person person = new Person("Uschi", "Glas", "München");
-            Person kunde = new Person("Angela", "Merkel", "Berlin");
-            Firma firma = new Firma("AfD", "Im Anus", TypderFirma.BriefkastenFirma);
+            Person person = new Person("Uschi", "Glas", "München",123,666);
+            Person person2 = new Person("Angela", "Merkel", "Berlin",001,1234);
+            Firma firma = new Firma("AfD", "Im Anus", TypderFirma.BriefkastenFirma,69,6666);
 
             //konto erstellen mit zinsrate 3% = 0.03M
             Einzahlungskonto ek1 = new Einzahlungskonto(person, 450.00M, 0.03M, 4);
@@ -47,19 +47,22 @@ namespace Bank
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
-            Einzahlungskonto ek2 = new Einzahlungskonto(kunde, 3000.50M, 0.023M, 2);
-            Console.WriteLine("Kontostand von {0} {1} ist {2} Euro", kunde.Vorname,kunde.Nachname, ek2.Kontostand);
+            Einzahlungskonto ek2 = new Einzahlungskonto(person2, 3000.50M, 0.023M, 2);
+            Console.WriteLine("Kontostand von {0} {1} ist {2} Euro", person2.Vorname,person2.Nachname, ek2.Kontostand);
             Console.ResetColor();
 
             Console.WriteLine();
-           /* Console.ForegroundColor = ConsoleColor.Red;
-            Einzahlungskonto ek3 = new Einzahlungskonto(firma, 500.0M, 0.07M, 5);
-            Console.WriteLine("Kontostand \"{0}\" {1} ist {2} Euro", firma.FirmaName, firma._firmatyp, ek3.Kontostand);
-            Console.WriteLine("Zinsen Konto {0} {1} {2} Euro", firma.FirmaName,firma._firmatyp, ek3.BerechneZinsen());
-            Hypothekenkonto hk1 = new Hypothekenkonto(firma, 2500.00M, 0.05M, 13);
-            Console.WriteLine("Zinsen Hypothekenkonto{0} {1} {2} Euro", firma.FirmaName,firma._firmatyp, hk1.BerechneZinsen());
-            Console.ResetColor();*/
-            Console.ReadKey();
+
+
+
+    /* Console.ForegroundColor = ConsoleColor.Red;
+     Einzahlungskonto ek3 = new Einzahlungskonto(firma, 500.0M, 0.07M, 5);
+     Console.WriteLine("Kontostand \"{0}\" {1} ist {2} Euro", firma.FirmaName, firma._firmatyp, ek3.Kontostand);
+     Console.WriteLine("Zinsen Konto {0} {1} {2} Euro", firma.FirmaName,firma._firmatyp, ek3.BerechneZinsen());
+     Hypothekenkonto hk1 = new Hypothekenkonto(firma, 2500.00M, 0.05M, 13);
+     Console.WriteLine("Zinsen Hypothekenkonto{0} {1} {2} Euro", firma.FirmaName,firma._firmatyp, hk1.BerechneZinsen());
+     Console.ResetColor();*/
+    Console.ReadKey();
         }
     }
 }
