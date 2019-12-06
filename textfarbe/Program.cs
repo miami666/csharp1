@@ -19,15 +19,15 @@ namespace textfarbe
             
             while (true)
             {
-                Console.TreatControlCAsInput = true;
+               // Console.TreatControlCAsInput = true;
                 ConsoleKeyInfo pressedKey = Console.ReadKey();
 
                 if (pressedKey.Key == ConsoleKey.Q)
                 {
                     break;
                 }
-                if ((pressedKey.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
-                Console.WriteLine(pressedKey.Key.ToString());
+              /*  if ((pressedKey.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
+                Console.WriteLine(pressedKey.Key.ToString());*/
                 OnKeyDown(pressedKey.KeyChar);
 
             }
