@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF97DEAC-84DC-43E5-95F8-6286A37C90CE}</ProjectGuid>
+    <ProjectGuid>{73A23399-596F-40EA-AEB3-CCC682656157}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>textfarbe_mit_method</RootNamespace>
-    <AssemblyName>textfarbe_mit_method</AssemblyName>
+    <RootNamespace>Methoden2</RootNamespace>
+    <AssemblyName>Methoden2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

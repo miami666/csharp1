@@ -9,7 +9,8 @@ vorher einzugebenden Text in verschiedenen Farben (an der selben Position) anzei
 Taste r -> Schrift in Rot, Hintergrund Schwarz
 Taste g -> Schrift in Gelb, Hintergrund Blau
 Taste b -> Schrift in Blau, Hintergrund Weiß
-Taste e -> Ende Programm*/
+Taste e -> Ende Programm
+*/
 namespace textfarbe
 {
     class Program
@@ -24,11 +25,13 @@ namespace textfarbe
 
                 if (pressedKey.Key == ConsoleKey.Q)
                 {
-                    break;
+                    //break;
+                   
                 }
-              /*  if ((pressedKey.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
-                Console.WriteLine(pressedKey.Key.ToString());*/
+                /*  if ((pressedKey.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
+                  Console.WriteLine(pressedKey.Key.ToString());*/
                 OnKeyDown(pressedKey.KeyChar);
+
 
             }
         }
@@ -36,24 +39,31 @@ namespace textfarbe
         {
             if (key == 'r')
             {
-                ChangeTextColor(ConsoleColor.Red, key.ToString());
+                ChangeTextColor(ConsoleColor.Red,ConsoleColor.Black, key.ToString());
             }
             if (key == 'g')
             {
-                ChangeTextColor(ConsoleColor.Yellow, key.ToString());
+                ChangeTextColor(ConsoleColor.Yellow,ConsoleColor.Blue, key.ToString());
+            }
+            if (key == 'b')
+            {
+                ChangeTextColor(ConsoleColor.Blue,ConsoleColor.White, key.ToString());
             }
         }
-        private static void ChangeTextColor(ConsoleColor color, string originalValue)
+        private static void ChangeTextColor(ConsoleColor color, ConsoleColor bgcolor, string originalValue)
         {      
             ConsoleColor originalColor = Console.ForegroundColor;
-           // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            ConsoleColor originalBgColor = Console.BackgroundColor;
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
             Console.ForegroundColor = color;
+            Console.BackgroundColor = bgcolor;
 
  
             Console.Write(originalValue);
 
 
-           // Console.ForegroundColor = originalColor;
+            // Console.ForegroundColor = originalColor;
+            //Console.BackgroundColor = originalBgColor;
         }
     }
 }

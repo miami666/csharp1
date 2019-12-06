@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF97DEAC-84DC-43E5-95F8-6286A37C90CE}</ProjectGuid>
+    <ProjectGuid>{EF1A45A8-73F4-4A9B-AF87-CBA9F07810BD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>textfarbe_mit_method</RootNamespace>
-    <AssemblyName>textfarbe_mit_method</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>MathsInterface</RootNamespace>
+    <AssemblyName>MathsInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMaths.cs" />
+    <Compile Include="MathsFactory.cs" />
+    <Compile Include="MathsLibrary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

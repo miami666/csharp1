@@ -18,38 +18,21 @@ namespace textfarbe_mit_method
             Console.ForegroundColor = originalColor;
         }
 
-
         static void Main(string[] args)
         {
             string input;
             Console.WriteLine("Texteingabe:");
             input = Console.ReadLine();
-
+            Console.CursorVisible = false;
             while (true)
             {
-                
-
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-             
-
-                if (pressedKey.Key == ConsoleKey.Q)
-                {
-                    break;
-                }
-                if (pressedKey.Key==ConsoleKey.R)
-                {
-                    ColoredConsoleWrite(ConsoleColor.Red, input);
-                }
-                if (pressedKey.Key == ConsoleKey.G)
-                {
-                    ColoredConsoleWrite(ConsoleColor.Yellow, input);
-                }
-                if (pressedKey.Key == ConsoleKey.B)
-                {
-                    ColoredConsoleWrite(ConsoleColor.Blue, input);
-                }
-            }
-           
+                
+                if (pressedKey.Key == ConsoleKey.Q) break;              
+                if (pressedKey.Key==ConsoleKey.R) ColoredConsoleWrite(ConsoleColor.Red, input);               
+                if (pressedKey.Key == ConsoleKey.G) ColoredConsoleWrite(ConsoleColor.Yellow, input);               
+                if (pressedKey.Key == ConsoleKey.B) ColoredConsoleWrite(ConsoleColor.Blue, input);               
+            }          
             Console.ReadKey();
         }
     }

@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF97DEAC-84DC-43E5-95F8-6286A37C90CE}</ProjectGuid>
+    <ProjectGuid>{F17A0C66-D5FD-4E96-BB4D-A57B5072E924}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>textfarbe_mit_method</RootNamespace>
-    <AssemblyName>textfarbe_mit_method</AssemblyName>
+    <RootNamespace>kleine_Aufgaben_3</RootNamespace>
+    <AssemblyName>kleine_Aufgaben_3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
