@@ -10,12 +10,15 @@ namespace DelegateStart
 
 		static void Main( string[] args )
 		{
-			new Program().DoIt();
-		}
+			Program p = new Program();
+            p.DoIt();
+            Console.ReadKey();
+        }
+
 
 		void DoIt()
 		{
-            StringTester stringTester = new StringTester(ContainsDigit);
+            StringTester stringTester = new StringTester(ContainsWhiteSpace);
 
             Console.WriteLine(stringTester("a bc")); 
 		}

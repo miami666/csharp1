@@ -172,6 +172,7 @@ namespace AbstrakteBasisklassen
                 Console.WriteLine(m2.Vorname + " " + m2.Nachname);
                 m2.DoWork();
             }
+            Console.ReadKey();
         }
     }
 }
