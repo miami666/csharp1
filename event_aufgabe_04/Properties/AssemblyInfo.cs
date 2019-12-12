@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("textfarbe_mit_method")]
+[assembly: AssemblyTitle("event_aufgabe_04")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("textfarbe_mit_method")]
+[assembly: AssemblyProduct("event_aufgabe_04")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ff97deac-84dc-43e5-95f8-6286a37c90ce")]
+[assembly: Guid("6330daad-e2a5-49cd-a347-89a537bdaea6")]
 
 // Version information for an assembly consists of the following four values:
 //
