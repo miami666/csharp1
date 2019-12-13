@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A4F792C7-1102-4B51-9250-64369841139B}</ProjectGuid>
+    <ProjectGuid>{AE4F7FA8-25FE-42EE-8A2B-D21D07C3A4AE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Delegates</RootNamespace>
-    <AssemblyName>Delegates</AssemblyName>
+    <RootNamespace>Stephan_Hense_TF_US_CSHG2_Bausteinprüfung_13122019_1</RootNamespace>
+    <AssemblyName>Stephan-Hense_TF_US_CSHG2-Bausteinprüfung_13122019_1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
