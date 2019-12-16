@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-
 namespace mysql_2
 {
     class DB
@@ -19,9 +18,8 @@ namespace mysql_2
                 connection.Open();
                 Console.WriteLine("connection established");
                 Console.ReadKey();
-
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.ReadKey();
@@ -29,38 +27,80 @@ namespace mysql_2
             }
             return connection;
         }
-
         public void Display(MySqlConnection con)
         {
             try
             {
                 string sql = "Select * from mitarbeiter";
-                MySqlCommand select = new MySqlCommand(sql,con);
+                MySqlCommand select = new MySqlCommand(sql, con);
+             
                 MySqlDataReader reader = select.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    for(int i=0;i<reader.FieldCount;i++)
+                    for (int i = 0; i < reader.FieldCount; i++)
                     {
                         Console.WriteLine(reader.GetValue(i));
                     }
-                   // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
-                   
-
+                    // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
                 }
                 reader.Close();
-
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.ReadKey();
-
             }
-
         }
-       
-        
-                
-            
+        public void Displayparam(MySqlConnection con)
+        {
+            try
+            {
+                string sql = "Select * from mitarbeiter where vorname=@param";
+                MySqlCommand select = new MySqlCommand(sql, con);
+                select.Parameters.AddWithValue("@param", "Uschi");
+                MySqlDataReader reader = select.ExecuteReader();
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        Console.WriteLine(reader.GetValue(i));
+                    }
+                    // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
+        }
+
+
+        public void Insert(MySqlConnection con,int id, string vorname, string nachname, string plz, string ort, string strasse, string abteilung)
+        {
+           
+            try
+            {
+                string query = "INSERT INTO mitarbeiter (id,vorname, nachname, plz, ort, strasse, abteilung) VALUES(@id,@vorname,@nachname,@plz,@ort,@strasse,@abteilung)";
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@vorname", vorname);
+                cmd.Parameters.AddWithValue("@nachname", nachname);
+                cmd.Parameters.AddWithValue("@plz", plz);
+                cmd.Parameters.AddWithValue("@ort", ort);
+                cmd.Parameters.AddWithValue("@strasse", strasse);
+                cmd.Parameters.AddWithValue("@abteilung", abteilung);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+          
+
+           
+        }
+
     }
 }

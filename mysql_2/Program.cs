@@ -13,6 +13,8 @@ namespace mysql_2
         {
             DB db = new DB();
             MySqlConnection connection = db.verbind();
+            db.Displayparam(connection);
+            db.Insert(connection, 3, "Jenna", "Jameson", "50859", "Keulen", "high 69", "xxx");
             db.Display(connection);
             Console.ReadKey();
             
