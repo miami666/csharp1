@@ -37,10 +37,10 @@ namespace mysql_2
                 MySqlDataReader reader = select.ExecuteReader();
                 while (reader.Read())
                 {
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        Console.WriteLine(reader.GetValue(i));
-                    }
+                  
+                        Console.WriteLine("{0}\t {1}\t {2}\t {3}\t {4}\t {5}\t {6}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+
+            
                     // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
                 }
                 reader.Close();
@@ -61,10 +61,12 @@ namespace mysql_2
                 MySqlDataReader reader = select.ExecuteReader();
                 while (reader.Read())
                 {
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        Console.WriteLine(reader.GetValue(i));
-                    }
+                    //for (int i = 0; i < reader.FieldCount; i++)
+                    //{
+                        //Console.WriteLine($"{reader.GetValue(i),-10}");
+                        Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                   
+                    //}
                     // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
                 }
                 reader.Close();
