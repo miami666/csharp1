@@ -9,38 +9,46 @@ using System.Data;
 
 namespace mysql_1
 {
-
     class DBConnect
     {
-        private MySqlConnection connection;
+        static string myConnectionstring = "server=localhost;uid=root;password=;database=Mitarbeiter;";
+        MySqlConnection con = new MySqlConnection(myConnectionstring);
+        public MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
         private string password;
-
         //Constructor
         public DBConnect()
         {
             Initialize();
         }
-
-        //Initialize values
         private void Initialize()
         {
-            
             server = "localhost";
-            database = "connectcsharptomysql";
-            uid = "uschi_glas";
-            password = "19nooDles_78";
+            database = "mitarbeiter";
+            uid = "root";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=";
             connection = new MySqlConnection(connectionString);
         }
-
-        //open connection to database
-        //open connection to database
+        public MySqlConnection verbind()
+        {
+            try
+            {
+                con.Open();
+                Console.WriteLine("connection established");
+                Console.ReadKey();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+                con = null;
+            }
+            return con;
+        }
         private bool OpenConnection()
         {
             try
@@ -50,13 +58,11 @@ namespace mysql_1
             }
             catch (MySqlException ex)
             {
-                
                 switch (ex.Number)
                 {
                     case 0:
                         Console.Write("Kann keine Verbindung zum Datenbank Server erstellen");
                         break;
-
                     case 1045:
                         Console.Write("Benutzername und oder passwort ungültig");
                         break;
@@ -64,8 +70,6 @@ namespace mysql_1
                 return false;
             }
         }
-
-        //Close connection
         private bool CloseConnection()
         {
             try
@@ -79,148 +83,196 @@ namespace mysql_1
                 return false;
             }
         }
-
-
-        //Insert statement
-        public void Insert()
+        public void Insert(MySqlConnection con, string vorname, string nachname, string plz, string ort, string strasse, string abteilung)
         {
-            string query = "INSERT INTO tableinfo (name, age) VALUES('Uschi Glas', '33')";
-
-            //open connection
+            string query = "INSERT INTO mitarbeiter (vorname, nachname, plz, ort, strasse, abteilung) VALUES(@vorname,@nachname,@plz,@ort,@strasse,@abteilung)";
             if (this.OpenConnection() == true)
             {
-                //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-
-                //Execute command
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-        }
-
-        //Update statement
-        public void Update()
-        {
-            string query = "UPDATE tableinfo SET name='Uschi', age='22' WHERE name='Uschi Glas'";
-
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
                 cmd.CommandText = query;
-                //Assign the connection using Connection
                 cmd.Connection = connection;
-
-                //Execute query
+                cmd.Parameters.AddWithValue("@vorname", vorname);
+                cmd.Parameters.AddWithValue("@nachname", nachname);
+                cmd.Parameters.AddWithValue("@plz", plz);
+                cmd.Parameters.AddWithValue("@ort", ort);
+                cmd.Parameters.AddWithValue("@strasse", strasse);
+                cmd.Parameters.AddWithValue("@abteilung", abteilung);
                 cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
             }
         }
-
-        //Delete statement
-        public void Delete()
+        public void Update(string updateparam, string vn, string nn, string ort, string plz, string str, string abt)
         {
-            string query = "DELETE FROM tableinfo WHERE name='Uschi Glas'";
-
+            string query = "UPDATE mitarbeiter SET nachname='" + nn + "',vorname='" + vn + "',ort='" + ort + "',plz='" + plz + "',strasse='" + str + "',abteilung='" + abt + "' WHERE nachname=@param";
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.CommandText = query;
+                cmd.Connection = connection;
+                cmd.Parameters.AddWithValue("@param", updateparam);
                 cmd.ExecuteNonQuery();
                 this.CloseConnection();
             }
         }
-
-        //Select statement
-        public List<string>[] Select()
+        public void Delete(string del)
         {
-            string query = "SELECT * FROM tableinfo";
-
-            //Create a list to store the result
-            List<string>[] list = new List<string>[3];
-            list[0] = new List<string>();
-            list[1] = new List<string>();
-            list[2] = new List<string>();
-
-            //Open connection
+            string query = "DELETE FROM mitarbeiter WHERE vorname=@param OR nachname=@param";
             if (this.OpenConnection() == true)
             {
-                //Create Command
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                //Read the data and store them in the list
-                while (dataReader.Read())
+                cmd.Parameters.AddWithValue("@param", del);
+                cmd.ExecuteNonQuery();
+                this.CloseConnection();
+            }
+        }
+        public void Display(MySqlConnection con)
+        {
+            try
+            {
+                string sql = "Select * from mitarbeiter";
+                MySqlCommand select = new MySqlCommand(sql, con);
+                MySqlDataReader reader = select.ExecuteReader();
+                Console.WriteLine($"{reader.GetName(1),-12} {reader.GetName(2),-12} {reader.GetName(3),-6} {reader.GetName(4),-10}  {reader.GetName(5),-20}  {reader.GetName(6),-10}");
+                while (reader.Read())
                 {
-                    list[0].Add(dataReader["id"] + "");
-                    list[1].Add(dataReader["name"] + "");
-                    list[2].Add(dataReader["age"] + "");
+                    Console.WriteLine($"{reader.GetString(1),-12} {reader.GetString(2),-12} {reader.GetString(3),-6} {reader.GetString(4),-10}  {reader.GetString(5),-20}  {reader.GetString(6),-10}");
+                    //Console.WriteLine("{0}\t",reader.GetInt32(0));
+                   // for (int i = 1; i < reader.FieldCount; i++)
+                   // {
+                   //     Console.Write(reader.GetString(i));
+                   // }
+                    //Console.WriteLine("\n");
                 }
-
-
-                //close Data Reader
-                dataReader.Close();
-
-                //close Connection
-                this.CloseConnection();
-
-
-
-
-
-                //return list to be displayed
-                return list;
-               
+                reader.Close();
             }
-            else
+            catch (MySqlException ex)
             {
-                return list;
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
             }
-
         }
-
-
+        public void Displayparam(MySqlConnection con, string search)
+        {
+            try
+            {
+                string sql = "Select * from mitarbeiter where vorname=@param";
+                MySqlCommand select = new MySqlCommand(sql, con);
+                select.Parameters.AddWithValue("@param", search);
+                MySqlDataReader reader = select.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine("\n");
+                    for (int i = 1; i < reader.FieldCount; i++)
+                    {
+                        Console.Write(reader.GetString(i) + "\t");
+                    }
+                    Console.WriteLine("\n");
+                }
+                reader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadKey();
+            }
+        }
     }
-
     class Program
     {
         static void Main(string[] args)
         {
+            bool looping = true;
+            string input;
             DBConnect db = new DBConnect();
-         
-
-            db.Select();
-            Console.WriteLine(String.Join("\n",db ));
-            Console.WriteLine(db.Select());
-            string cs = "server=localhost;database=connectcsharptomysql;uid=uschi_glas;pwd=19nooDles_78;";
-
-            string sql = "SELECT id, name FROM tableinfo";
-   using (var conn = new MySqlConnection(cs))
+            MySqlConnection dbcon = db.verbind();
+            Console.SetCursorPosition(Console.WindowWidth / 2, 20);
+            while (looping)
             {
-                conn.Open();
-                using (var cmd = new MySqlCommand(sql, conn))
+                Console.Clear();
+                Console.SetCursorPosition(Console.WindowWidth/2, 20);
+                Console.WriteLine("====Menu====");
+                Console.WriteLine("(a)nzeigen");
+                Console.WriteLine("(s)uchen ");
+                Console.WriteLine("(i)nsert ");
+                Console.WriteLine("(u)pdate");
+                Console.WriteLine("(l)öschen");
+                Console.WriteLine("(e)xit");
+                ConsoleKeyInfo pressedkey = Console.ReadKey(true);
+                if (pressedkey.Key == ConsoleKey.A)
                 {
+                    db.Display(dbcon);
+                    Console.ReadKey();
                    
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Console.WriteLine("Id: {0} Name: {1}",
-                                             reader["id"], reader["name"]);
-                        }
-                    }
+                }
+                if (pressedkey.Key == ConsoleKey.S)
+                {
+                    Console.WriteLine("Vorname der gesucht werden soll?");
+                    input = Console.ReadLine();
+                    db.Displayparam(dbcon, input);
+                    Console.ReadKey();
+                
+                    
+                }
+                if (pressedkey.Key == ConsoleKey.I)
+                {
+                    string vn;
+                    string nn;
+                    string ort;
+                    string plz;
+                    string str;
+                    string abteilung;
+                    Console.WriteLine("Vorname?");
+                    vn = Console.ReadLine();
+                    Console.WriteLine("Nachname?");
+                    nn = Console.ReadLine();
+                    Console.WriteLine("PLZ?");
+                    plz = Console.ReadLine();
+                    Console.WriteLine("Ort?");
+                    ort = Console.ReadLine();
+                    Console.WriteLine("Strasse");
+                    str = Console.ReadLine();
+                    Console.WriteLine("Abteilung?");
+                    abteilung = Console.ReadLine();
+                    db.Insert(dbcon, vn, nn, plz, ort, str, abteilung);
+                    Console.ReadKey();
+                }
+                if (pressedkey.Key == ConsoleKey.U)
+                {
+                    string vn;
+                    string nn;
+                    string ort;
+                    string plz;
+                    string str;
+                    string abteilung;
+                    Console.WriteLine("Nachname des Datensatzes der aktualisiert werden soll?");
+                    input = Console.ReadLine();
+                    Console.WriteLine("Vorname?");
+                    vn = Console.ReadLine();
+                    Console.WriteLine("Nachname?");
+                    nn = Console.ReadLine();
+                    Console.WriteLine("PLZ?");
+                    plz = Console.ReadLine();
+                    Console.WriteLine("Ort?");
+                    ort = Console.ReadLine();
+                    Console.WriteLine("Strasse");
+                    str = Console.ReadLine();
+                    Console.WriteLine("Abteilung?");
+                    abteilung = Console.ReadLine();
+                    db.Update(input, nn, vn, ort, plz, str, abteilung);
+                    Console.ReadKey();
+                }
+                if (pressedkey.Key == ConsoleKey.L)
+                {
+                    Console.WriteLine("zu löschender Vorname oder Nachname?");
+                    input = Console.ReadLine();
+                    db.Delete(input);
+                    Console.ReadKey();
+                }
+                if (pressedkey.Key == ConsoleKey.E)
+                {
+                    break;
                 }
             }
-
-
             Console.ReadKey();
         }
     }
 }
-

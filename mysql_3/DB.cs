@@ -33,18 +33,28 @@ namespace mysql_2
             {
                 string sql = "Select * from mitarbeiter";
                 MySqlCommand select = new MySqlCommand(sql, con);
-             
+
                 MySqlDataReader reader = select.ExecuteReader();
                 while (reader.Read())
                 {
                     Console.WriteLine("{0}\t",
                         reader.GetInt32(0));
 
-                    for (int i = 1; i < reader.FieldCount ; i++)
+                    for (int i = 1; i < reader.FieldCount; i++)
                     {
-                        Console.Write(reader.GetString(i)+"\t");
+                        Console.Write(reader.GetString(i) + "\t");
 
                     }
+
+
+                    //Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3}",
+                    //"Ort: {4} Strasse: {5} Abteilung: {6}", 
+                    //reader["id"],
+                    //reader["vorname"] ,
+                    //reader["nachname"], 
+                    //reader["plz"], reader["ort"], 
+                    //reader["strasse"], 
+                    //reader["abteilung"]);
                 }
                 reader.Close();
             }
@@ -66,9 +76,9 @@ namespace mysql_2
                 {
                     //for (int i = 0; i < reader.FieldCount; i++)
                     //{
-                        //Console.WriteLine($"{reader.GetValue(i),-10}");
-                        Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
-                   
+                    //Console.WriteLine($"{reader.GetValue(i),-10}");
+                    Console.WriteLine("{0} {1} {2} {3} {4} {5} {6}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+
                     //}
                     // Console.WriteLine("id: {0} Vorname: {1} Nachname: {2} PLZ: {3} Ort: {4} Strasse: {5} Abteilung: {6}", reader["id"],reader["vorname"],reader["nachname"], reader["plz"], reader["ort"], reader["strasse"], reader["abteilung"]);
                 }
@@ -82,9 +92,9 @@ namespace mysql_2
         }
 
 
-        public void Insert(MySqlConnection con,int id, string vorname, string nachname, string plz, string ort, string strasse, string abteilung)
+        public void Insert(MySqlConnection con, int id, string vorname, string nachname, string plz, string ort, string strasse, string abteilung)
         {
-           
+
             try
             {
                 string query = "INSERT INTO mitarbeiter (id,vorname, nachname, plz, ort, strasse, abteilung) VALUES(@id,@vorname,@nachname,@plz,@ort,@strasse,@abteilung)";
@@ -102,9 +112,9 @@ namespace mysql_2
             {
                 Console.WriteLine(ex.Message);
             }
-          
 
-           
+
+
         }
 
     }

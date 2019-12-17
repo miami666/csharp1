@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="625">
+    <WrapPanel>
+        <StackPanel>
+            <Label Name="label01" Background="Cyan" Height="30" Margin="5">Label 01</Label>
+            <Label Name="label02" Background="Aquamarine" Height="30" Margin="5">Label 02</Label>
+
+        </StackPanel>
+        <StackPanel>
+
+            <TextBox Name="textbox01" Height="30" Margin="5">chainsaws.cars.chicks</TextBox>
+            <TextBox Name="textbox02" Height="30" Margin="5">Textbox02</TextBox>
+            
+        </StackPanel>
+        <StackPanel>
+            <Button Background="PaleVioletRed" Name="btn1" Click="Btn1_Click" Height="30" Margin="5">ClickiBunti 1</Button>
+            <Button Background="SkyBlue" Name="btn2" Click="Btn2_Click" Height="30" Margin="5">ClickiBunti 2</Button>
+        </StackPanel>
+        
+    </WrapPanel>
+</Window>
