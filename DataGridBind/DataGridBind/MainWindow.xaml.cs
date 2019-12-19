@@ -26,7 +26,7 @@ namespace DataGridBind
     public partial class MainWindow : Window
     {
         #region MySqlConnection Connection
-        MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);      
+        MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringMitarbeiter"].ConnectionString);      
         public MainWindow()
         {
             InitializeComponent();
@@ -38,11 +38,12 @@ namespace DataGridBind
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("Select CustomerID,ContactName,Address,City,Phone,Email from customers", conn);
+                MySqlCommand cmd = new MySqlCommand("Select id,vorname,nachname,plz,ort,strasse,abteilung from mitarbeiter", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adp.Fill(ds, "LoadDataBinding");
-                dataGridCustomers.DataContext = ds;
+                dataGridMitarbeiter.DataContext = ds;
+                
             }
             catch (MySqlException ex)
             {
@@ -54,5 +55,39 @@ namespace DataGridBind
             }
         }
         #endregion
+
+
+
+    private void btnSave_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+                ///the following statement
+                ///inserts
+                ///updates
+                ///deletes for you
+                /// Without the SqlCommandBuilder, this line would fail.
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("Select * from mitarbeiter", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds, "LoadDataBinding");
+                adp.Update(ds,"LoadDataBinding");
+                dataGridMitarbeiter.DataContext = ds;
+                
+            }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.ToString());
+        }
+            finally
+            {
+                conn.Close();
+            }
     }
+
+
 }
+  
+}
+

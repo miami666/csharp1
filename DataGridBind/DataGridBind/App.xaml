@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock" >
+            <Setter Property="Foreground" Value="#57737a" />
+            <Setter Property="FontSize" Value="10" />
+            
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Foreground" Value="#040f0f" />
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Foreground" Value="#040f0f" />
+        </Style>
+
     </Application.Resources>
 </Application>
