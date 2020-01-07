@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 namespace Vokabeltrainer
 {
     class DBConnect
@@ -26,9 +27,9 @@ namespace Vokabeltrainer
         //Constructor
         public DBConnect()
         {
-            Initialize();
+           // Initialize();
         }
-        private void Initialize()
+      /*  private void Initialize()
         {
             server = "localhost";
             database = "mitarbeiter";
@@ -37,27 +38,13 @@ namespace Vokabeltrainer
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=";
             connection = new MySqlConnection(connectionString);
-        }
+        }*/
         public MySqlConnection verbind()
         {
             try
             {
                 con.Open();
                 MessageBox.Show("Verbindung hergestellt");
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                con = null;
-            }
-            return con;
-        }
-        private bool OpenConnection()
-        {
-            try
-            {
-                connection.Open();
-                return true;
             }
             catch (MySqlException ex)
             {
@@ -69,23 +56,15 @@ namespace Vokabeltrainer
                     case 1045:
                         MessageBox.Show("Benutzername und oder passwort ungültig");
                         break;
+                    default:
+                        MessageBox.Show(ex.Message);
+                        break;
                 }
-                return false;
+                con = null;
             }
+            return con;
         }
-        private bool CloseConnection()
-        {
-            try
-            {
-                connection.Close();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-        }
+/*
         public void ReadData(MySqlConnection con)
         {
             var items = new List<Vokabeln>();
@@ -106,6 +85,37 @@ namespace Vokabeltrainer
                     };
                 };
             };
+        }*/
+        public string createVkbl(MySqlConnection con, string de,string en)
+        {
+            var stringToReturn = "";
+
+            try
+            {
+                using (con)
+                {
+               
+
+                    //Compose query using sql parameters
+                    var sqlCommand = "INSERT INTO vokabeln (deutsch,englisch) VALUES (@de,@en)";
+
+                    //Create mysql command and pass sql query
+                    using (var command = new MySqlCommand(sqlCommand, con))
+                    {
+                        command.Parameters.AddWithValue("@de", de);
+                        command.Parameters.AddWithValue("@en", en);
+                        command.ExecuteNonQuery();
+                    }
+
+                    stringToReturn = "Erfolg.Hurra!";
+                }
+            }
+            catch (MySqlException ex)
+            {
+                stringToReturn = "Fehler: " + ex.Message;
+            }
+
+            return stringToReturn;
         }
     }
     public partial class MainWindow : Window
@@ -165,16 +175,36 @@ namespace Vokabeltrainer
                 aktuelleVokabel = items[iMax];
                 labelAbfrage.Content = aktuelleVokabel.HoleDeutschesWort();
                 textBoxEingabe.Clear();
-                MessageBox.Show("Richtig!");
+                meinBlock.Text="Richtig!";
+                meinBlock.Foreground = Brushes.Green;
+                Debug.WriteLine(Vokabeln.LetzteAbfrage);
+                Debug.WriteLine(aktuelleVokabel.WarEineMinuteNichtDran());
+
+                //MessageBox.Show("Richtig!");
             }
             else
             {
-                MessageBox.Show("Leider falsch!");
+                //MessageBox.Show("Leider falsch!");
+                textBoxEingabe.Clear();
+                meinBlock.Text = "Falsch!";
+                meinBlock.Foreground = Brushes.Red;
             }
         }
+        private void buttonInsert_Click(object sender, RoutedEventArgs e)
+        {
+            DBConnect db = new DBConnect();
+            MySqlConnection connekke = db.verbind();
+           
+            Debug.WriteLine(db.createVkbl(connekke, insertDe.Text, insertEn.Text));
+
+        }
+     
     }
     class Vokabeln
     {
+        int id;
+        string deutsch;
+        string englisch;
         public int Id { get; set; }
         public string Deutsch { get; set; }
         public string Englisch { get; set; }
@@ -195,6 +225,13 @@ namespace Vokabeltrainer
         DateTime letzteAbfrage;
         int zahlKorrekterAbfragen;
         int zahlFehlgeschlagenerAbfragen;
+        public static DateTime LetzteAbfrage
+        {
+            get;
+            set;
+        }
+        public static int ZahlKorrekterAbfragen { get; set; }
+        public int ZahlFehlgeschlagenerAbfragen { get; set; }
         public bool WarEineMinuteNichtDran()
         {
             return letzteAbfrage < DateTime.Now - TimeSpan.FromMinutes(1);

@@ -10,26 +10,41 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
-          
+
         </Grid.RowDefinitions>
 
+        <ListView Grid.Column="0" Grid.RowSpan="3" Margin="10" Name="lvVokabeln">
+            <ListView.Resources>
+                <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Background" Value="Lightblue"/>
+                    <Setter Property="Foreground" Value="DarkCyan"/>
+                    <Setter Property="FontSize" Value="8px"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="id" Width="120"  HeaderContainerStyle="{StaticResource myHeaderStyle}" DisplayMemberBinding="{Binding Id}"  />
+                    <GridViewColumn Header="Deutsch" Width="150"  HeaderContainerStyle="{StaticResource myHeaderStyle}" DisplayMemberBinding="{Binding Deutsch}" />
+                    <GridViewColumn Header="Englisch" Width="150"  HeaderContainerStyle="{StaticResource myHeaderStyle}" DisplayMemberBinding="{Binding Englisch}" />
 
-        <Label Grid.Column="1" Content="---" Height="28" HorizontalAlignment="Left" Margin="24,45,0,0" Name="labelAbfrage" VerticalAlignment="Top" Width="197" />
-        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="24,79,0,0" Name="textBoxEingabe" VerticalAlignment="Top" Width="200" />
-        <Button Grid.Column="1" Content="Prüfe!" Height="23" HorizontalAlignment="Left" Margin="24,118,0,0" Name="buttonTest" Background="HotPink" VerticalAlignment="Top" Width="75" Click="buttonTest_Click" />
-        
-        
-            <ListView Grid.Column="0" Margin="10" Name="lvVokabeln">
-                <ListView.View>
-                    <GridView>
-                    <GridViewColumn Header="id" Width="120" DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Deutsch" Width="150" DisplayMemberBinding="{Binding Deutsch}" />
-                    <GridViewColumn Header="Englisch" Width="150" DisplayMemberBinding="{Binding Englisch}" />
-                    
                 </GridView>
-                </ListView.View>
-            </ListView>
+            </ListView.View>
+        </ListView>
+
+        <Label Grid.Column="1" Content="---" Height="28" HorizontalAlignment="Left" Margin="24,5,0,0" Name="labelAbfrage" VerticalAlignment="Top" Width="197" />
+        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="24,0,0,0" Name="textBoxEingabe" VerticalAlignment="center" Width="200" />
+         <Button Grid.Column="1" Grid.Row="0" Content="Prüfe!" Height="23" HorizontalAlignment="Left" Margin="24,0,0,10" Name="buttonTest" Background="HotPink" VerticalAlignment="Bottom" Width="75" Click="buttonTest_Click" />
+      
+        <TextBox Grid.Column="1"  Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="24,10,0,0" Name="insertDe" VerticalAlignment="top" Width="200" />
+        <TextBox Grid.Column="1"  Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="24,0,0,10" Name="insertEn" VerticalAlignment="center" Width="200" />
+        <Button Grid.Column="1" Grid.Row="1" Content="Neue Vokabel hinzufuegen" Height="23" HorizontalAlignment="Left" Margin="24,0,0,10" Name="buttonInsert" Background="LightBlue" VerticalAlignment="bottom" Width="75" Click="buttonInsert_Click" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Name="meinBlock" Margin="24,10,10,10" VerticalAlignment="Top" Foreground="Red" Height="60"></TextBlock>
+        
+        
+        
         
 
 
