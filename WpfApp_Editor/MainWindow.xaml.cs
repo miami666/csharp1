@@ -1,19 +1,25 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO;
 using Microsoft.Win32;
-using System.Windows.Controls;
 
 namespace WpfApp_Editor
 {
-    public partial class RichTextEditorSample : Window
+    public partial class RichTextEditorBeispiel : Window
     {
-        public RichTextEditorSample()
+        public RichTextEditorBeispiel()
         {
             InitializeComponent();
             cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
@@ -56,6 +62,7 @@ namespace WpfApp_Editor
                 FileStream fileStream = new FileStream(dlg.FileName, FileMode.Create);
                 TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
                 range.Save(fileStream, DataFormats.Rtf);
+                fileStream.Close();
             }
         }
 
@@ -68,6 +75,43 @@ namespace WpfApp_Editor
         private void cmbFontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
             rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
+        }
+        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        {
+            //UnicodeEncoding uniencoding = new UnicodeEncoding();
+            //string filename = @"c:\Users\Administrator\Documents\userinputlog.txt";
+
+            //byte[] result = uniencoding.GetBytes(UserInput.Text);
+
+            //using (FileStream SourceStream = File.Open(filename, FileMode.OpenOrCreate))
+            //{
+            //    SourceStream.Seek(0, SeekOrigin.End);
+            //    await SourceStream.WriteAsync(result, 0, result.Length);
+            //}
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+
+            dlg.DefaultExt = ".rtf";
+            dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
+
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+
+            if (result == true)
+            {
+
+                string filename = dlg.FileName;
+                UserInput.Text = filename;
+
+                var flowDocument = new FlowDocument();
+                var textRange = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
+                using (FileStream fileStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    textRange.Load(fileStream, DataFormats.Rtf);
+                }
+                FlowDocReader.Document = flowDocument;
+            }
         }
     }
 }

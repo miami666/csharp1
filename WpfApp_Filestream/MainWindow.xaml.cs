@@ -25,7 +25,11 @@ namespace WpfApp_Filestream
         {
             InitializeComponent();
         }
-        private async void buttonTest_Click(object sender, RoutedEventArgs e)
+        private void buttonRo_Click(object sender,RoutedEventArgs e)
+        {
+
+        }
+        private void buttonTest_Click(object sender, RoutedEventArgs e)
         {
             //UnicodeEncoding uniencoding = new UnicodeEncoding();
             //string filename = @"c:\Users\Administrator\Documents\userinputlog.txt";

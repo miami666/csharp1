@@ -6,11 +6,17 @@
         xmlns:local="clr-namespace:WpfApp_Filestream"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    
 
         <Grid>
-            <TextBox  Height="23" HorizontalAlignment="Left" Margin="24,0,0,0" Name="UserInput" VerticalAlignment="center" Width="200" />
-            <Button  Content="log" Height="23" HorizontalAlignment="Left" Margin="24,0,0,10" Name="buttonTest" Background="HotPink" VerticalAlignment="Bottom" Width="75" Click="buttonTest_Click" />
-            <FlowDocumentReader Name="FlowDocReader" Background="LightBlue" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Height="23" HorizontalAlignment="Left" Margin="24,20,0,0" Name="UserInput" VerticalAlignment="top" Width="75" />
+            <Button Grid.Column="0" Content="open" Height="23" HorizontalAlignment="left" Margin="24,50,0,10" Name="buttonTest" Background="HotPink" VerticalAlignment="top" Width="75" Click="buttonTest_Click" />
+        <Button Grid.Column="0" Content="schreibschutz" Height="23" HorizontalAlignment="left" Margin="24,100,0,10" Name="buttonRoh" Background="HotPink" VerticalAlignment="top" Width="75" Click="buttonRo_Click" />
+        <FlowDocumentReader Grid.Column="1" Margin="0,0,0,0" Name="FlowDocReader" Background="LightBlue" >
 
             </FlowDocumentReader>
         </Grid>
