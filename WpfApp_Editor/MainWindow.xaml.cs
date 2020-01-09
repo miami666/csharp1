@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-
 namespace WpfApp_Editor
 {
     public partial class RichTextEditorBeispiel : Window
@@ -25,7 +24,6 @@ namespace WpfApp_Editor
             cmbFontFamily.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
         }
-
         private void oldSkoolEditor_SelectionChanged(object sender, RoutedEventArgs e)
         {
             object temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontWeightProperty);
@@ -34,13 +32,11 @@ namespace WpfApp_Editor
             btnItalic.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontStyles.Italic));
             temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
             btnUnderline.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(TextDecorations.Underline));
-
             temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
             cmbFontFamily.SelectedItem = temp;
-            temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            temp = oldSkoolEditor.Selection.GetPropertyValue(TextElement.FontSizeProperty);
             cmbFontSize.Text = temp.ToString();
         }
-
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -55,7 +51,6 @@ namespace WpfApp_Editor
                 fileStream.Close();
             }
         }
-
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
@@ -68,16 +63,14 @@ namespace WpfApp_Editor
                 fileStream.Close();
             }
         }
-
         private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbFontFamily.SelectedItem != null)
                 oldSkoolEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
         }
-
         private void cmbFontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
-            oldSkoolEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
+            oldSkoolEditor.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, cmbFontSize.Text);
         }
         private void fontcolor(RichTextBox rc)
         {
@@ -97,9 +90,8 @@ namespace WpfApp_Editor
         {
             return attributes & ~attributesToRemove;
         }
-        private void btnSchreibschutz_Click(object sender,RoutedEventArgs e)
+        private void btnSchreibschutz_Click(object sender, RoutedEventArgs e)
         {
-
             string dateiName = UserInput.Text;
             if (!File.Exists(dateiName))
             {
@@ -109,30 +101,23 @@ namespace WpfApp_Editor
             else
             {
                 FileAttributes attributes = File.GetAttributes(dateiName);
-
                 if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
                 {
-
                     attributes = RemoveAttribute(attributes, FileAttributes.ReadOnly);
                     File.SetAttributes((dateiName), attributes);
                     MessageBox.Show("Datei " + dateiName + " nicht mehr schreibgeschuetzt.");
                 }
                 else
                 {
-
                     File.SetAttributes((dateiName), File.GetAttributes(dateiName) | FileAttributes.ReadOnly);
-                    MessageBox.Show("Datei "+dateiName+" jetzt schreibgeschützt.");
+                    MessageBox.Show("Datei " + dateiName + " jetzt schreibgeschützt.");
                 }
             }
-
         }
-
-        private void buttonAnzeige_Click(object sender,RoutedEventArgs e)
+        private void buttonAnzeige_Click(object sender, RoutedEventArgs e)
         {
             if (UserInput.Text != "")
             {
-
-
                 var window = new anzeige(this) { Owner = this };
                 window.ShowDialog();
             }
@@ -140,7 +125,6 @@ namespace WpfApp_Editor
             {
                 MessageBox.Show("keine Datei ausgewählt");
             }
-
         }
     }
 }

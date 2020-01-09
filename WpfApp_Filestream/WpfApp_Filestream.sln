@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "streeamschreiber_2", "..\st
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "streamschreiber_3", "..\streamschreiber_3\streamschreiber_3.csproj", "{98775725-FF29-4B3B-921C-5F80048A5493}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorienzaehler", "..\Kalorienzaehler\Kalorienzaehler.csproj", "{1466FEA2-4B34-40B5-99FF-D329EDB12085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_kcal", "..\WpfApp_kcal\WpfApp_kcal.csproj", "{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,22 @@ Global
 		{98775725-FF29-4B3B-921C-5F80048A5493}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98775725-FF29-4B3B-921C-5F80048A5493}.Release|x86.ActiveCfg = Release|Any CPU
 		{98775725-FF29-4B3B-921C-5F80048A5493}.Release|x86.Build.0 = Release|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Debug|x86.Build.0 = Debug|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|x86.ActiveCfg = Release|Any CPU
+		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|x86.Build.0 = Release|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Debug|x86.Build.0 = Debug|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|x86.ActiveCfg = Release|Any CPU
+		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-
 namespace WpfApp_Editor
 {
     /// <summary>
@@ -26,12 +25,11 @@ namespace WpfApp_Editor
         {
             _rich = rich;
             InitializeComponent();
-
             string filename;
             filename = _rich.UserInput.Text;
             var flowDocument = new FlowDocument();
-                var textRange = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
-            if(File.Exists(filename))
+            var textRange = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
+            if (File.Exists(filename))
             {
                 using (FileStream fileStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
@@ -43,8 +41,6 @@ namespace WpfApp_Editor
             {
                 MessageBox.Show("keine Datei ausgewählt");
             }
-
-
         }
     }
 }
