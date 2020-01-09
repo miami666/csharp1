@@ -26,18 +26,18 @@ namespace WpfApp_Editor
             cmbFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
         }
 
-        private void rtbEditor_SelectionChanged(object sender, RoutedEventArgs e)
+        private void oldSkoolEditor_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            object temp = rtbEditor.Selection.GetPropertyValue(Inline.FontWeightProperty);
+            object temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontWeightProperty);
             btnBold.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontWeights.Bold));
-            temp = rtbEditor.Selection.GetPropertyValue(Inline.FontStyleProperty);
+            temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontStyleProperty);
             btnItalic.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontStyles.Italic));
-            temp = rtbEditor.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
+            temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
             btnUnderline.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(TextDecorations.Underline));
 
-            temp = rtbEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
+            temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontFamilyProperty);
             cmbFontFamily.SelectedItem = temp;
-            temp = rtbEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            temp = oldSkoolEditor.Selection.GetPropertyValue(Inline.FontSizeProperty);
             cmbFontSize.Text = temp.ToString();
         }
 
@@ -47,9 +47,12 @@ namespace WpfApp_Editor
             dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
             if (dlg.ShowDialog() == true)
             {
+                string filename = dlg.FileName;
+                UserInput.Text = filename;
                 FileStream fileStream = new FileStream(dlg.FileName, FileMode.Open);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                TextRange range = new TextRange(oldSkoolEditor.Document.ContentStart, oldSkoolEditor.Document.ContentEnd);
                 range.Load(fileStream, DataFormats.Rtf);
+                fileStream.Close();
             }
         }
 
@@ -60,7 +63,7 @@ namespace WpfApp_Editor
             if (dlg.ShowDialog() == true)
             {
                 FileStream fileStream = new FileStream(dlg.FileName, FileMode.Create);
-                TextRange range = new TextRange(rtbEditor.Document.ContentStart, rtbEditor.Document.ContentEnd);
+                TextRange range = new TextRange(oldSkoolEditor.Document.ContentStart, oldSkoolEditor.Document.ContentEnd);
                 range.Save(fileStream, DataFormats.Rtf);
                 fileStream.Close();
             }
@@ -69,49 +72,75 @@ namespace WpfApp_Editor
         private void cmbFontFamily_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbFontFamily.SelectedItem != null)
-                rtbEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
+                oldSkoolEditor.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cmbFontFamily.SelectedItem);
         }
 
         private void cmbFontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
-            rtbEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
+            oldSkoolEditor.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.Text);
         }
-        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        private void fontcolor(RichTextBox rc)
         {
-            //UnicodeEncoding uniencoding = new UnicodeEncoding();
-            //string filename = @"c:\Users\Administrator\Documents\userinputlog.txt";
+            var colorDialog = new System.Windows.Forms.ColorDialog();
+            if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                var wpfcolor = Color.FromArgb(colorDialog.Color.A, colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);
+                TextRange range = new TextRange(rc.Selection.Start, rc.Selection.End);
+                range.ApplyPropertyValue(FlowDocument.ForegroundProperty, new SolidColorBrush(wpfcolor));
+            }
+        }
+        private void btn_Font_Click(object sender, RoutedEventArgs e)
+        {
+            fontcolor(oldSkoolEditor);
+        }
+        private static FileAttributes RemoveAttribute(FileAttributes attributes, FileAttributes attributesToRemove)
+        {
+            return attributes & ~attributesToRemove;
+        }
+        private void btnSchreibschutz_Click(object sender,RoutedEventArgs e)
+        {
 
-            //byte[] result = uniencoding.GetBytes(UserInput.Text);
+            string dateiName = UserInput.Text;
+            if (!File.Exists(dateiName))
+            {
+                MessageBox.Show($"{dateiName}Datei nicht vorhanden");
+                return;
+            }
+            else
+            {
+                FileAttributes attributes = File.GetAttributes(dateiName);
 
-            //using (FileStream SourceStream = File.Open(filename, FileMode.OpenOrCreate))
-            //{
-            //    SourceStream.Seek(0, SeekOrigin.End);
-            //    await SourceStream.WriteAsync(result, 0, result.Length);
-            //}
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+                if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                {
 
+                    attributes = RemoveAttribute(attributes, FileAttributes.ReadOnly);
+                    File.SetAttributes((dateiName), attributes);
+                    MessageBox.Show("Datei " + dateiName + " nicht mehr schreibgeschuetzt.");
+                }
+                else
+                {
 
-            dlg.DefaultExt = ".rtf";
-            dlg.Filter = "Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
+                    File.SetAttributes((dateiName), File.GetAttributes(dateiName) | FileAttributes.ReadOnly);
+                    MessageBox.Show("Datei "+dateiName+" jetzt schreibgeschützt.");
+                }
+            }
 
+        }
 
-            Nullable<bool> result = dlg.ShowDialog();
-
-
-            if (result == true)
+        private void buttonAnzeige_Click(object sender,RoutedEventArgs e)
+        {
+            if (UserInput.Text != "")
             {
 
-                string filename = dlg.FileName;
-                UserInput.Text = filename;
 
-                var flowDocument = new FlowDocument();
-                var textRange = new TextRange(flowDocument.ContentStart, flowDocument.ContentEnd);
-                using (FileStream fileStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    textRange.Load(fileStream, DataFormats.Rtf);
-                }
-                FlowDocReader.Document = flowDocument;
+                var window = new anzeige(this) { Owner = this };
+                window.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("keine Datei ausgewählt");
+            }
+
         }
     }
 }

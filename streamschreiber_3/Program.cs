@@ -28,12 +28,13 @@ namespace streamschreiber_3
         static void Main(string[] args)
         {
             string line="";
+            bool looping = true;
             string dateiName;
             string neuerDateiName;
             string docPath =
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             Console.CursorVisible = false;
-            while (true)
+            while (looping)
             {
                 Console.Clear();
                 Console.WriteLine("(N)eue Datei");
@@ -45,151 +46,178 @@ namespace streamschreiber_3
                 Console.WriteLine("(u)mbenennen");
                 Console.WriteLine("(Q)uit");
                 ConsoleKeyInfo pressedKey = Console.ReadKey(true);
-                if (pressedKey.Key == ConsoleKey.Q) break;
-                if (pressedKey.Key == ConsoleKey.N)
+                switch (pressedKey.Key)
                 {
-                    Console.WriteLine("Dateiname eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName} existiert bereits!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Texteingabe: ");
-                        line = Console.ReadLine();
-                        using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, dateiName)))
+                  
+                    case ConsoleKey.Q:
                         {
-                            outputFile.WriteLine(line);
+                            looping = false;
+                            break;
                         }
-                    }
-                }
-                if (pressedKey.Key == ConsoleKey.T)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (!File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName}Datei nicht vorhanden");
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Texteingabe:");
-                        line = Console.ReadLine();
-                        using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, dateiName), true))
+                    case ConsoleKey.N:
                         {
-                            outputFile.WriteLine(line);
-                        }
-                        
-                    }
-                }
-                if (pressedKey.Key == ConsoleKey.A)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (!File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName}Datei nicht vorhanden");
-                        return;
-                    }
-                    else
-                    {
-                        string zeile = "";
-                        using (StreamReader sr = new StreamReader(Path.Combine(docPath, dateiName)))
-                        {
-                            while ((zeile = sr.ReadLine()) != null)
+                            Console.WriteLine("Dateiname eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (File.Exists(Path.Combine(docPath, dateiName)))
                             {
-                                Console.WriteLine(zeile);
+                                Console.WriteLine($"{dateiName} existiert bereits!");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Texteingabe: ");
+                                line = Console.ReadLine();
+                                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, dateiName)))
+                                {
+                                    outputFile.WriteLine(line);
+                                   
+                                }
+                                break;
+
                             }
                         }
-                        Console.ReadKey();
-                    }
-                }
-                if (pressedKey.Key == ConsoleKey.S)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (!File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName}Datei nicht vorhanden");
-                        return;
-                    }
-                    else
-                    {
-                        FileAttributes attributes = File.GetAttributes(Path.Combine(docPath, dateiName));
+                    case ConsoleKey.T:
+                        {
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (!File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                Console.WriteLine($"{dateiName}Datei nicht vorhanden");
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Texteingabe:");
+                                line = Console.ReadLine();
+                                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, dateiName), true))
+                                {
+                                    outputFile.WriteLine(line);
+                                }
+                                break;
 
-                        if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
-                        {
+                            }
 
-                            attributes = RemoveAttribute(attributes, FileAttributes.ReadOnly);
-                            File.SetAttributes(Path.Combine(docPath, dateiName), attributes);
-                            Console.WriteLine("Datei {0} nicht mehr schreibgeschuetzt.", Path.Combine(docPath, dateiName));
                         }
-                        else
+                    case ConsoleKey.A:
                         {
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (!File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                Console.WriteLine($"{dateiName}Datei nicht vorhanden");
+                                return;
+                            }
+                            else
+                            {
+                                string zeile = "";
+                                using (StreamReader sr = new StreamReader(Path.Combine(docPath, dateiName)))
+                                {
+                                    while ((zeile = sr.ReadLine()) != null)
+                                    {
+                                        Console.WriteLine(zeile);
+                                    }
+                                }
+                                Console.ReadKey();
+                            }
+                            break;
 
-                            File.SetAttributes(Path.Combine(docPath,dateiName), File.GetAttributes(Path.Combine(docPath,dateiName)) | FileAttributes.ReadOnly);
-                            Console.WriteLine("Datei {0} jetzt schreibgeschützt.", Path.Combine(docPath, dateiName));
                         }
-                    }
-                    Console.ReadKey();
-                }
-                if (pressedKey.Key == ConsoleKey.L)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        try
+                    case ConsoleKey.S:
                         {
-                            File.Delete(Path.Combine(docPath, dateiName));
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (!File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                Console.WriteLine($"{dateiName}Datei nicht vorhanden");
+                                return;
+                            }
+                            else
+                            {
+                                FileAttributes attributes = File.GetAttributes(Path.Combine(docPath, dateiName));
+
+                                if ((attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                                {
+
+                                    attributes = RemoveAttribute(attributes, FileAttributes.ReadOnly);
+                                    File.SetAttributes(Path.Combine(docPath, dateiName), attributes);
+                                    Console.WriteLine("Datei {0} nicht mehr schreibgeschuetzt.", Path.Combine(docPath, dateiName));
+                                }
+                                else
+                                {
+
+                                    File.SetAttributes(Path.Combine(docPath, dateiName), File.GetAttributes(Path.Combine(docPath, dateiName)) | FileAttributes.ReadOnly);
+                                    Console.WriteLine("Datei {0} jetzt schreibgeschützt.", Path.Combine(docPath, dateiName));
+                                }
+                            }
+                            Console.ReadKey();
+                            break;
                         }
-                        catch (IOException e)
+                    case ConsoleKey.L:
                         {
-                            Console.WriteLine(e.Message);
-                            return;
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                try
+                                {
+                                    File.Delete(Path.Combine(docPath, dateiName));
+                                }
+                                catch (IOException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{dateiName} existiert nicht");
+                            }
+                            break;
                         }
-                    }
-                    else
+                    case ConsoleKey.K:
                     {
-                        Console.WriteLine($"{dateiName} existiert nicht");
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (!File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                Console.WriteLine($"{dateiName} existiert nicht");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Neuer Dateiname:");
+                                neuerDateiName = Console.ReadLine();
+                                string quelle = Path.Combine(docPath, dateiName);
+                                string ziel = Path.Combine(docPath, neuerDateiName);
+                                File.Copy(quelle, ziel);
+                            }
+                            break;
+
                     }
+                    case ConsoleKey.U:
+                        {
+                            Console.WriteLine("Dateinamen eingeben:");
+                            dateiName = Console.ReadLine();
+                            if (!File.Exists(Path.Combine(docPath, dateiName)))
+                            {
+                                Console.WriteLine($"{dateiName} existiert nicht");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Neuer Dateiname:");
+                                neuerDateiName = Console.ReadLine();
+                                string quelle = Path.Combine(docPath, dateiName);
+                                string ziel = Path.Combine(docPath, neuerDateiName);
+                                File.Move(quelle, ziel);
+                            }
+                            break;
+
+                        }
+
+
+                    default:
+                        break;
                 }
-                if (pressedKey.Key == ConsoleKey.K)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (!File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName} existiert nicht");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Neuer Dateiname:");
-                        neuerDateiName = Console.ReadLine();
-                        string quelle = Path.Combine(docPath, dateiName);
-                        string ziel = Path.Combine(docPath, neuerDateiName);
-                        File.Copy(quelle, ziel);
-                    }
-                }
-                if (pressedKey.Key == ConsoleKey.U)
-                {
-                    Console.WriteLine("Dateinamen eingeben:");
-                    dateiName = Console.ReadLine();
-                    if (!File.Exists(Path.Combine(docPath, dateiName)))
-                    {
-                        Console.WriteLine($"{dateiName} existiert nicht");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Neuer Dateiname:");
-                        neuerDateiName = Console.ReadLine();
-                        string quelle = Path.Combine(docPath, dateiName);
-                        string ziel = Path.Combine(docPath, neuerDateiName);
-                        File.Move(quelle, ziel);
-                    }
-                }
+
             }
         }
         private static FileAttributes RemoveAttribute(FileAttributes attributes, FileAttributes attributesToRemove)
