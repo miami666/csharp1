@@ -44,7 +44,9 @@ namespace Wpf_kcal_calc
                 inp = speiseKey.Text;
                 Double.TryParse(kcalValue.Text, out kcal);
                 kcalDict.Add(inp, kcal);
-                WriteDictToFile(kcalDict, "Y:\\kcalDict.txt");
+                string filename = String.Format("C:\\{0:yyyy-MM-dd}.txt", DateTime.Now);
+                
+                WriteDictToFile(kcalDict, filename);
 
             }
            
@@ -67,7 +69,8 @@ namespace Wpf_kcal_calc
         }
         private void WriteDictToFile(Dictionary<string, double> Dict, string path)
         {
-            using (StreamWriter fileWriter = new StreamWriter(path))
+         
+            using (StreamWriter fileWriter = new StreamWriter(path,true))
             {
            
                 foreach (KeyValuePair<string, double> kvPair in Dict)
