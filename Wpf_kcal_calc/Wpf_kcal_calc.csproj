@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}</ProjectGuid>
+    <ProjectGuid>{0DE3123A-0F63-414C-BC4A-B330EE2705AD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfApp_kcal</RootNamespace>
-    <AssemblyName>WpfApp_kcal</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Wpf_kcal_calc</RootNamespace>
+    <AssemblyName>Wpf_kcal_calc</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,10 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Dic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

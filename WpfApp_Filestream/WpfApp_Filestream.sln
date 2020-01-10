@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_Filestream", "WpfApp_Filestream.csproj", "{5F8940F9-5E73-445F-A814-5578019284B9}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorienzaehler", "..\Kalorienzaehler\Kalorienzaehler.csproj", "{1466FEA2-4B34-40B5-99FF-D329EDB12085}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_kcal", "..\WpfApp_kcal\WpfApp_kcal.csproj", "{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf_kcal_calc", "..\Wpf_kcal_calc\Wpf_kcal_calc.csproj", "{0DE3123A-0F63-414C-BC4A-B330EE2705AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,14 @@ Global
 		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|x86.ActiveCfg = Release|Any CPU
 		{2E6AA7D3-38DE-4739-A02F-7B9D19AD232A}.Release|x86.Build.0 = Release|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|x86.Build.0 = Debug|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
