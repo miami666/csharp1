@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "streamschreiber_3", "..\str
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalorienzaehler", "..\Kalorienzaehler\Kalorienzaehler.csproj", "{1466FEA2-4B34-40B5-99FF-D329EDB12085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf_kcal_calc", "..\Wpf_kcal_calc\Wpf_kcal_calc.csproj", "{0DE3123A-0F63-414C-BC4A-B330EE2705AD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emma_Uebung", "..\Emma_Uebung\Emma_Uebung.csproj", "{7248ED28-98E8-41A0-8269-455FB39CCB3F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lottoSuperSechs", "..\lottoSuperSechs\lottoSuperSechs.csproj", "{5241394F-628E-4ED5-A009-ECB21BE09007}"
@@ -115,14 +113,6 @@ Global
 		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|x86.ActiveCfg = Release|Any CPU
 		{1466FEA2-4B34-40B5-99FF-D329EDB12085}.Release|x86.Build.0 = Release|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Debug|x86.Build.0 = Debug|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|x86.ActiveCfg = Release|Any CPU
-		{0DE3123A-0F63-414C-BC4A-B330EE2705AD}.Release|x86.Build.0 = Release|Any CPU
 		{7248ED28-98E8-41A0-8269-455FB39CCB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7248ED28-98E8-41A0-8269-455FB39CCB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7248ED28-98E8-41A0-8269-455FB39CCB3F}.Debug|x86.ActiveCfg = Debug|Any CPU
