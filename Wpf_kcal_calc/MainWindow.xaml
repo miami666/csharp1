@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:utilities="clr-namespace:Utilities;assembly=Utilities"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -18,89 +19,99 @@
     <!--<Window.Background>
         <ImageBrush  ImageSource="zunehmrechner.jpg"/>
     </Window.Background>-->
-    <DockPanel>
-        <smtx:XamlDisplay Key="menus_1" Background="{DynamicResource PrimaryHueDarkBrush}" DockPanel.Dock="top" Margin="0 0 0 0">
-            <Menu IsMainMenu="True" Background="{DynamicResource PrimaryHueDarkBrush}" Foreground="White">
-                <MenuItem Header="_File">
-                    <MenuItem Header="Save">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentSave" />
-                        </MenuItem.Icon>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel  MinWidth="212">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                              DockPanel.Dock="Top"
+                              HorizontalAlignment="Right" Margin="16"
+                              IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                <Menu>
+                    <Menu.Resources>
+                        <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+                            <Setter Property="utilities:TreeHelpers.Modifiers">
+                                <Setter.Value>
+                                    <utilities:ModifierCollection>
+                                        <utilities:Modifier Property="{x:Static Popup.PlacementProperty}" 
+                                                            Value="{x:Static PlacementMode.Right}" 
+                                                            TemplatePartName="PART_Popup" />
+                                    </utilities:ModifierCollection>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Menu.Resources>
+                    <Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>
+                    <MenuItem Header="Item 1">
+                        <MenuItem Header="Sub Item 1" />
+                        <MenuItem Header="Sub Item 2" />
+                        <MenuItem Header="Sub Item 3" />
                     </MenuItem>
-                    <MenuItem Header="Save As.." />
-                    <MenuItem Header="Exit" InputGestureText="Ctrl+E">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ExitToApp" />
-                        </MenuItem.Icon>
+                    <MenuItem Header="Item 2">
+                        <MenuItem Header="Sub Item 1" />
+                        <MenuItem Header="Sub Item 2" />
+                        <MenuItem Header="Sub Item 3" />
                     </MenuItem>
-                    <Separator />
-                    <MenuItem Header="Excellent" IsCheckable="True" IsChecked="True" />
-                    <MenuItem Header="Rubbish" IsCheckable="True" />
-                    <MenuItem Header="Dig Deeper" InputGestureText="Ctrl+D">
-                        <MenuItem Header="Enlightenment?" IsCheckable="True" />
-                        <MenuItem Header="Disappointment" IsCheckable="True" />
+                    <MenuItem Header="Item 3">
+                        <MenuItem Header="Sub Item 1" />
+                        <MenuItem Header="Sub Item 2" />
+                        <MenuItem Header="Sub Item 3" />
                     </MenuItem>
-                    <MenuItem Header="Look Deeper" InputGestureText="Ctrl+D">
-                        <MenuItem Header="Plain" />
-                        <MenuItem Header="Ice Cream" />
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="_Edit">
-                    <MenuItem Header="_Cut" Command="Cut">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentCut" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="_Copy" Command="Copy">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentCopy" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="_Paste" Command="Paste">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="ContentPaste" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </smtx:XamlDisplay>
-      
-         
-                   
-                   
-               
+                </Menu>
+            </DockPanel>
+        </materialDesign:DrawerHost.LeftDrawerContent>
 
-  
 
-    <Grid x:Name="LayoutRoot" Margin="20" VerticalAlignment="Center" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="LayoutRoot" Margin="20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
 
-            <Button x:Name="neueSpeise" Grid.Row="3" Grid.Column="0" Click="btnNeueSpeise_Click" Content="{materialDesign:PackIcon FoodForkDrink}"
+                <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+           
+
+   
+
+        <Button x:Name="neueSpeise" Grid.Row="3" Grid.Column="1" Click="btnNeueSpeise_Click" Content="{materialDesign:PackIcon FoodForkDrink}"
         ToolTip="weitere Mahlzeit eintragen" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}">
 
-            </Button>
-            <Button x:Name="btnAdd"  FontSize="20" Content="{materialDesign:PackIcon Cannabis}" ToolTip="Eintrag zum Kalorientagebuch hinzufügen"  Foreground="White" Height="48" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1" Margin="10" Click="btnAdd_Click" />
-            <Button x:Name="btnCalc" FontSize="18" Content="{materialDesign:PackIcon CalculatorVariant}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" ToolTip="nötige körperliche Aktivität zum Kalorienabbau berechnen!"  Foreground="White" Height="48" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1" Margin="10" Click="btnCalc_Click" />
-            <TextBox x:Name="los" Grid.Row="2" Visibility="Hidden"/>
-            <TextBlock Text="Speise"   Height="40"  Grid.Column="0" Grid.Row="1" Margin="10"/>
-            <TextBlock Text="Kcal"  Height="40" Grid.Column="0" Grid.Row="2" Margin="10"/>
-            <TextBox x:Name="speiseKey" Height="40"  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 0 10 5"/>
-            <TextBox x:Name="kcalValue" Height="40" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="10 0 10 5"/>
-            <!--<Viewbox Grid.Column="2" Visibility="hidden">
+                </Button>
+                <Button x:Name="btnAdd"  FontSize="20" Content="{materialDesign:PackIcon Cannabis}" ToolTip="Eintrag zum Kalorientagebuch hinzufügen"  Foreground="White" Height="48" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1" Margin="10" Click="btnAdd_Click" />
+                <Button x:Name="btnCalc" FontSize="18" Content="{materialDesign:PackIcon CalculatorVariant}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" ToolTip="nötige körperliche Aktivität zum Kalorienabbau berechnen!"  Foreground="White" Height="48" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="1" Margin="10" Click="btnCalc_Click" />
+                <TextBox x:Name="los" Grid.Row="2" Visibility="Hidden"/>
+                <TextBlock Text="Speise"   Height="40"  Grid.Column="1" Grid.Row="1" Margin="10"/>
+                <TextBlock Text="Kcal"  Height="40" Grid.Column="1" Grid.Row="2" Margin="10"/>
+                <TextBox x:Name="speiseKey" Height="40"  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Margin="10 0 10 5"/>
+                <TextBox x:Name="kcalValue" Height="40" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Margin="10 0 10 5"/>
+                <!--<Viewbox Grid.Column="2" Visibility="hidden">
             <Calendar x:Name="cld" />
         </Viewbox>-->
-     
+            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                      Mode="PrimaryMid" DockPanel.Dock="Top">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                  x:Name="MenuToggleButton" />
+            </materialDesign:ColorZone>
+
         </Grid>
-    </DockPanel>
-    
+
+    </materialDesign:DrawerHost>
 </Window>
