@@ -12,8 +12,6 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        xmlns:local="clr-namespace:Wpf_kcal_calc"
-        xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1000">
     <!--<Window.Background>
@@ -71,9 +69,19 @@
                 </Menu>
             </DockPanel>
         </materialDesign:DrawerHost.LeftDrawerContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                      Mode="PrimaryMid" DockPanel.Dock="Top">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                  x:Name="MenuToggleButton" />
+            </materialDesign:ColorZone>
 
 
-        <Grid x:Name="LayoutRoot" Margin="20" >
+            <Grid x:Name="LayoutRoot" Grid.Row="1" Margin="20" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="1*"/>
@@ -81,7 +89,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
 
                 <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -105,13 +113,10 @@
                 <!--<Viewbox Grid.Column="2" Visibility="hidden">
             <Calendar x:Name="cld" />
         </Viewbox>-->
-            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                                      Mode="PrimaryMid" DockPanel.Dock="Top">
-                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
-                                  x:Name="MenuToggleButton" />
-            </materialDesign:ColorZone>
-
+            
         </Grid>
 
+        </Grid>
     </materialDesign:DrawerHost>
+  
 </Window>
