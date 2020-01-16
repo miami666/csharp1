@@ -76,7 +76,7 @@
             </Grid.RowDefinitions>
             <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
                                       Mode="PrimaryMid" DockPanel.Dock="Top">
-                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Left" IsChecked="False"
                                   x:Name="MenuToggleButton" />
             </materialDesign:ColorZone>
 
