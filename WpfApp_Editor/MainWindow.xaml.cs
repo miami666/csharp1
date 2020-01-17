@@ -70,7 +70,9 @@ namespace WpfApp_Editor
         }
         private void cmbFontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
-            oldSkoolEditor.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, cmbFontSize.Text);
+       
+                oldSkoolEditor.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, cmbFontSize.Text);
+          
         }
         private void fontcolor(RichTextBox rc)
         {
@@ -125,6 +127,36 @@ namespace WpfApp_Editor
             {
                 MessageBox.Show("keine Datei ausgewählt");
             }
+        }
+
+        private void MenuItem_Checked(object sender, RoutedEventArgs e)
+        {
+            if (IsLoaded)
+            {
+                string s = (e.Source as RadioButton).Content.ToString();
+                switch (s)
+                {
+                    case "Gelb":
+                        oldSkoolEditor.Background = new SolidColorBrush(Colors.Yellow);
+                        break;
+                    case "Weiß":
+                        oldSkoolEditor.Background = new SolidColorBrush(Colors.White);
+                        break;
+                    case "Blau":
+                        oldSkoolEditor.Background = new SolidColorBrush(Colors.Blue);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+
+
+        private void Ende_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+
         }
     }
 }

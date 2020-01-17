@@ -2,7 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Textbearbeitung OldSkool 2.0" Height="600" Width="800">
-    
+    <!--<Window.Background>
+        <ImageBrush ImageSource="zunehmrechner.jpg"/>
+
+    </Window.Background>-->
     <Window.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
         <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
@@ -18,16 +21,25 @@
             <RowDefinition Height="3*"></RowDefinition>
         </Grid.RowDefinitions>
     <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
-        <ToolBar DockPanel.Dock="Top">
-            <Button Command="ApplicationCommands.Open">
-                <Image Source="C:/Users/Administrator/source/repos/csharp1/WpfApp_Editor/folder.png" Width="20" Height="20" />
-            </Button>
-            <Button Command="ApplicationCommands.Save">
-                <Image Source="C:/Users/Administrator/source/repos/csharp1/WpfApp_Editor/save.png" Width="16" Height="16" />
-            </Button>
-            <Separator />
-            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
-                <Image Source="C:/Users/Administrator/source/repos/csharp1/WpfApp_Editor/text_bold.png" Width="20" Height="20" />
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Datei">
+                    <MenuItem Header="Öffnen" Command="ApplicationCommands.Open"></MenuItem>
+                    <MenuItem Header="Speichern" Command="ApplicationCommands.Save"></MenuItem>
+                    <MenuItem x:Name="Ende" Header="Beenden" Click="Ende_Click" ></MenuItem>
+                    <Separator/>
+                    <MenuItem Header="_Hintergrund" RadioButton.Checked="MenuItem_Checked">
+                    <RadioButton IsChecked="true">Weiß</RadioButton>
+                    <RadioButton>Gelb</RadioButton>
+                    <RadioButton>Blau</RadioButton>
+                    </MenuItem>
+                    <Separator/>
+                </MenuItem>
+                
+             </Menu>
+                    <ToolBar DockPanel.Dock="Top">
+
+                <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
+                    <Image Source="C:/Users/Administrator/source/repos/csharp1/WpfApp_Editor/text_bold.png" Width="20" Height="20" />
             </ToggleButton>
             <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic">
                 <Image Source="C:/Users/Administrator/source/repos/csharp1/WpfApp_Editor/text_italic.png" Width="16" Height="16" />
@@ -66,7 +78,19 @@
                 <Button Content="LeseAnsicht" Height="20" HorizontalAlignment="left" Margin="24,0,0,0" Name="buttonAnzeige" Background="HotPink"  Width="75" Click="buttonAnzeige_Click" />
                 <TextBox  Height="20" Visibility="Hidden" HorizontalAlignment="Left" Margin="24,20,0,0" Name="UserInput" VerticalAlignment="top" Width="75" x:FieldModifier="public"/>
             </ToolBar>
-        <RichTextBox Name="oldSkoolEditor" SelectionChanged="oldSkoolEditor_SelectionChanged" />
+            <StackPanel Margin="10">
+                <TextBox Text="Right-click here for context menu!">
+                    <TextBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Cut" Command="Cut">
+                          
+                            </MenuItem>
+                            
+                        </ContextMenu>
+                    </TextBox.ContextMenu>
+                </TextBox>
+            </StackPanel>
+            <RichTextBox Name="oldSkoolEditor" SelectionChanged="oldSkoolEditor_SelectionChanged" />
     </DockPanel>
         
        
