@@ -1,0 +1,93 @@
+﻿<Window x:Class="WpfMenue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMenue"
+        mc:Ignorable="d"
+        Title="HauptMenue" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        SizeChanged="Window_SizeChanged"
+        MouseMove="Window_MouseMove">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Bearbeiten">
+                <MenuItem Header="_Kopieren" Click="MenuItem_Click"/>
+                <MenuItem x:Name="MEnde" Header="_Ende" Click="MEnde_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Ansicht">
+                <MenuItem Header="_Hintergrund" RadioButton.Checked="MenuItem_Checked">
+                    <!--
+                    <MenuItem.Icon>
+                        <Image Source = "work.gif"/>
+                    </MenuItem.Icon>
+                    -->
+                    <RadioButton IsChecked="True">Weiß</RadioButton>
+                    <RadioButton>Gelb</RadioButton>
+                    <RadioButton>Rot</RadioButton>
+                </MenuItem>
+                <Separator/>
+                <WrapPanel>
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,5,0">Schriftgröße</TextBlock>
+                    <ComboBox x:Name="cb_groesse" SelectionChanged="Cb_groesse_SelectionChanged">
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem Selector.IsSelected="True">12</ComboBoxItem>
+                        <ComboBoxItem>18</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
+                <Separator/>
+                <MenuItem x:Name="item_fett" Header="_Fett" IsCheckable="True" Click="Item_fett_Click"/>
+
+            </MenuItem>
+        </Menu>
+        <ToolBarTray x:Name="tbtray" DockPanel.Dock="Top" Background="LightGray">
+            <ToolBar x:Name="tb1">
+                <Label>1:</Label>
+                <ToggleButton x:Name="Tg01" Click="ToggleButton_Click">Fett</ToggleButton>
+                <ToggleButton x:Name="Tg02">Kursiv</ToggleButton>
+            </ToolBar>
+            <ToolBar x:Name="tb2">
+                <Label>2:</Label>
+                <Label>Hintergrundfarbe</Label>
+                <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem>Weiß</ComboBoxItem>
+                    <ComboBoxItem>Gelb</ComboBoxItem>
+                    <ComboBoxItem>Rot</ComboBoxItem>
+                </ComboBox>
+                <Label>Schiftgröße</Label>
+                <ComboBox x:Name="cb_groesse01" SelectionChanged="Cb_groesse_SelectionChanged">
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem Selector.IsSelected="True">12</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                </ComboBox>
+            </ToolBar>
+        </ToolBarTray>
+        <WrapPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <TextBox x:Name="tb" Width="80" Margin="5"/>
+            <Label x:Name="lb" Margin="5">Hallo Welt
+                <Label.ContextMenu>
+                    <ContextMenu x:Name="cm" HorizontalOffset="50" VerticalOffset="2" Opened="Cm_Opened" Closed="Cm_Closed">
+                        <MenuItem x:Name="item_fett_kontextmenu" Header="_Fett" IsCheckable="True" Click="Item_fett_Click"/>
+                    </ContextMenu>
+                </Label.ContextMenu>
+            
+            </Label>
+        </WrapPanel>
+        <StatusBar Height="30" VerticalAlignment="Bottom" x:Name="sb" DockPanel.Dock="Bottom">
+            <TextBlock x:Name="tb3"></TextBlock>
+            <Separator/>
+            <Label>Größe:</Label>
+            <TextBlock x:Name="tb4"></TextBlock>
+            <Separator/>
+            <CheckBox x:Name="cb" Click="cb_Click"/>
+            <WrapPanel x:Name="wp" Visibility="Collapsed">
+                <Label>Position</Label>
+                <TextBlock x:Name="tb5" VerticalAlignment="Center"></TextBlock>
+            </WrapPanel>
+
+        </StatusBar>
+        
+    </DockPanel>
+</Window>

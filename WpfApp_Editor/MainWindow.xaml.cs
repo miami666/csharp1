@@ -70,9 +70,7 @@ namespace WpfApp_Editor
         }
         private void cmbFontSize_TextChanged(object sender, TextChangedEventArgs e)
         {
-       
                 oldSkoolEditor.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, cmbFontSize.Text);
-          
         }
         private void fontcolor(RichTextBox rc)
         {
@@ -128,7 +126,6 @@ namespace WpfApp_Editor
                 MessageBox.Show("keine Datei ausgewählt");
             }
         }
-
         private void MenuItem_Checked(object sender, RoutedEventArgs e)
         {
             if (IsLoaded)
@@ -150,13 +147,9 @@ namespace WpfApp_Editor
                 }
             }
         }
-
-
-
         private void Ende_Click(object sender, RoutedEventArgs e)
         {
             Close();
-
         }
     }
 }

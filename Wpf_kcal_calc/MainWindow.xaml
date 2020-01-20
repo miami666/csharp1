@@ -17,6 +17,7 @@
     <!--<Window.Background>
         <ImageBrush  ImageSource="zunehmrechner.jpg"/>
     </Window.Background>-->
+  
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +26,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+ 
+
+
+    </Window.CommandBindings>
+
     <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
         <materialDesign:DrawerHost.LeftDrawerContent>
             <DockPanel  MinWidth="212">
@@ -52,20 +60,12 @@
                         </ItemsPanelTemplate>
                     </Menu.ItemsPanel>
                     <MenuItem Header="Item 1">
-                        <MenuItem Header="Sub Item 1" />
-                        <MenuItem Header="Sub Item 2" />
+                        <MenuItem Header="Sub Item 1" Command="New" ></MenuItem>
+                        <MenuItem Header="Rechnen" Click="MenuItem_Click" />
                         <MenuItem Header="Sub Item 3" />
                     </MenuItem>
-                    <MenuItem Header="Item 2">
-                        <MenuItem Header="Sub Item 1" />
-                        <MenuItem Header="Sub Item 2" />
-                        <MenuItem Header="Sub Item 3" />
-                    </MenuItem>
-                    <MenuItem Header="Item 3">
-                        <MenuItem Header="Sub Item 1" />
-                        <MenuItem Header="Sub Item 2" />
-                        <MenuItem Header="Sub Item 3" />
-                    </MenuItem>
+
+
                 </Menu>
             </DockPanel>
         </materialDesign:DrawerHost.LeftDrawerContent>

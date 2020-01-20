@@ -51,6 +51,16 @@ namespace Wpf_kcal_calc
             };
 
         }
+        private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+           
+        }
+
         double kcal;
         string inp;
   
@@ -102,6 +112,7 @@ namespace Wpf_kcal_calc
             double sum = kcalDict.Sum(x => x.Value);
             MessageBox.Show("Da pack ich mir an de Kopp. Du has janz fiese " + sum + " Kalorien jefräße.\nDu mus " + 30 * sum / 50 + " Minuten die Beene vertredde john oder + " + 60 * sum / 400 + " Minuten schwemme.");
         }
+      
         private void btnNeueSpeise_Click(object sender, RoutedEventArgs e)
         {
             speiseKey.Clear();
@@ -145,6 +156,16 @@ namespace Wpf_kcal_calc
                // MessageBox.Show("Kalorientagebuch für den heutigen Tag noch leer.");               
             }
         }
-        
+  
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            abDafuer = true;
+            double sum = kcalDict.Sum(x => x.Value);
+            MessageBox.Show("Da pack ich mir an de Kopp. Du has janz fiese " + sum + " Kalorien jefräße.\nDu mus " + 30 * sum / 50 + " Minuten die Beene vertredde john oder + " + 60 * sum / 400 + " Minuten schwemme.");
+
+        }
     }
+    
+
 }
