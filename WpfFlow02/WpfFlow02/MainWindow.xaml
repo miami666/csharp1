@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfFlow02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFlow02"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <FlowDocumentReader>
+        <FlowDocument x:Name="fd">
+            <Paragraph>normal
+                <Bold>fett</Bold>
+                <Italic>kursiv</Italic>
+                <Underline>unterstrichen</Underline>
+                <LineBreak/>
+                <Bold>
+                    <Underline>
+                        <Italic>fett,kursiv,unterstrichen</Italic></Underline></Bold>
+                <LineBreak/>
+                <Run Background="Black" FontFamily="Tahoma" FontSize="12" Foreground="White">Es folgt eine Formel</Run>
+                y
+                <Span BaselineAlignment="Subscript" FontSize="12">0</Span>=x
+                <Span BaselineAlignment="Superscript" FontSize="12">2</Span>
+                <LineBreak/>
+                Ein Satz mit
+                <InlineUIContainer>
+                    <Button>Button</Button></InlineUIContainer>
+                im Text
+            </Paragraph>
+        </FlowDocument>
+        
+    </FlowDocumentReader>
+</Window>
