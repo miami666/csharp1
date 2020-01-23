@@ -1,37 +1,135 @@
-﻿<Window x:Class="WpfRtf.MainWindow"
+﻿<Controls:MetroWindow x:Class="WpfRtf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:WpfRtf"
         mc:Ignorable="d"
-        Title="RichTextBox" Height="450" Width="800">
-    <StackPanel>
-        <WrapPanel HorizontalAlignment="Center">
-            <Button Command="EditingCommands.AlignLeft" CommandTarget="{Binding ElementName=rtb}" Margin="3">Links</Button>
-            <Button Command="EditingCommands.AlignCenter" CommandTarget="{Binding ElementName=rtb}" Margin="3">Zentriert</Button>
-            <Button Command="EditingCommands.AlignRight" CommandTarget="{Binding ElementName=rtb}" Margin="3">Rechts</Button>
-            <Button Command="EditingCommands.ToggleBold" CommandTarget="{Binding ElementName=rtb}" Margin="3">Fett</Button>
-            <Button Command="EditingCommands.ToggleUnderline" CommandTarget="{Binding ElementName=rtb}" Margin="3">Unterstrichen</Button>
-        </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center">
-            <Button Name="dspeichern" Margin="3" Click="dspeichern_Click">Dokument speichern</Button>
-            <Button Name="dladen" Margin="3" Click="dladen_Click">Dokument laden</Button>
-        </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center">
-            <Button Name="aspeichern" Margin="3" Click="aspeichern_Click">1. Absatz speichern</Button>
-            <Button Name="aladen" Margin="3" Click="aladen_Click">1. Absatz laden</Button>
-        </WrapPanel>
-        <RichTextBox x:Name="rtb" Width="270" Height="70" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <FlowDocument x:Name="fd" FontSize="12">
-                <Paragraph>Das ist
-                    <Bold>Absatz</Bold> 1</Paragraph>
-                <Paragraph TextAlignment="Center">Und das ist
-                    <Bold>Absatz</Bold> 2
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-    </StackPanel>
+        Title="Editor" Height="450" Width="800"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      WindowStartupLocation="CenterScreen">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed" />
+
+    </Window.CommandBindings>
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            
+            <Controls:Flyout x:Name="yourMahAppFlyout" Header="Menu" Position="Left" Width="200" Theme="Dark" >
+                <Menu>
+                    <MenuItem Header="Öffnen" Command="ApplicationCommands.Open"></MenuItem>
+                    <MenuItem Header="Speichern" Command="ApplicationCommands.Save"></MenuItem>
+                    <MenuItem x:Name="Ende" Header="Beenden" Click="Ende_Click" ></MenuItem>
+                   
+                </Menu>
+                
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    <Controls:MetroWindow.LeftWindowCommands>
+        <Controls:WindowCommands>
+            <ToggleButton  
+        IsChecked="{Binding ElementName=yourMahAppFlyout, Path=IsOpen}" Cursor="Hand">
+                <StackPanel Orientation="Horizontal"  >
+                    <iconPacks:PackIconMaterial Width="24" Height="24" Kind="Hamburger" Foreground="White" Margin="0,0,0,0"/>
+                </StackPanel>
+            </ToggleButton>
+        </Controls:WindowCommands></Controls:MetroWindow.LeftWindowCommands>
 
 
-</Window>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            
+            <Button Click="btn_Font_Click"  Foreground="White" Margin="0,0,0,0">
+                <StackPanel Orientation="Horizontal"  >
+                    <iconPacks:PackIconModern Width="24" Height="24" Kind="DrawPaintbrush" Foreground="White" Margin="0,0,0,0"/>
+        </StackPanel>
+            </Button>
+            <Button  Height="24" Click="btnSchreibschutz_Click"   >
+                <StackPanel Orientation="Horizontal"  >
+                    <iconPacks:PackIconModern Width="24" Height="24" Kind="Lock" Foreground="White" Margin="0,0,0,0"/>
+                
+                </StackPanel>
+
+
+
+            </Button>
+            <Button  Height="24" Margin="0,0,0,0" Name="buttonAnzeige"    Click="buttonAnzeige_Click" >
+                <StackPanel Orientation="Horizontal"  >
+                    <iconPacks:PackIconModern Width="24" Height="24" Kind="HardwareHeadphonesBluetooth" Foreground="White" Margin="0,0,0,0"/>
+
+                </StackPanel>
+            </Button>
+         
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+
+            <ToolBar DockPanel.Dock="Top" Height="24">
+
+
+
+                <ToggleButton Background="White" Command="EditingCommands.ToggleBold" Name="btnBold">
+                    <StackPanel Orientation="Horizontal"  >
+                        <iconPacks:PackIconModern Width="12" Height="12" Kind="TextBold"  Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </ToggleButton>
+                <ToggleButton Background="White" Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                    <StackPanel Orientation="Horizontal"  >
+                        <iconPacks:PackIconModern Width="12" Height="12" Kind="TextItalic"  Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </ToggleButton>
+                <ToggleButton Background="White" Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                    <StackPanel Orientation="Horizontal"  >
+                        <iconPacks:PackIconModern Width="12" Height="12" Kind="TextUnderline"  Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </ToggleButton>
+                <Separator/>
+                <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" />
+                <ComboBox Name="cmbFontSize" Width="50" IsEditable="True" TextBoxBase.TextChanged="cmbFontSize_TextChanged" />
+                
+                <Separator/>
+                <ToggleButton Background="White" Command="EditingCommands.AlignLeft" Name="btnLeft">
+                    <StackPanel Orientation="Horizontal"  >
+                        <iconPacks:PackIconModern Width="12" Height="12" Kind="TextAlignLeft"  Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </ToggleButton>
+                <ToggleButton Background="White" Command="EditingCommands.AlignRight" Name="btnRight">
+                    <StackPanel Orientation="Horizontal"  >
+                        <iconPacks:PackIconModern Width="12" Height="12" Kind="TextAlignRight"  Margin="0,0,0,0"/>
+
+                    </StackPanel>
+                </ToggleButton>
+
+
+
+                <TextBox  Height="20" Visibility="Hidden" HorizontalAlignment="Left" Margin="24,20,0,0" Name="UserInput" VerticalAlignment="top" Width="75" x:FieldModifier="public"/>
+            </ToolBar>
+           
+            <RichTextBox Name="oldSkoolEditor" SelectionChanged="oldSkoolEditor_SelectionChanged" />
+        </DockPanel>
+
+
+
+    </Grid>
+
+
+</Controls:MetroWindow>
