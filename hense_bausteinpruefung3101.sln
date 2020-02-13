@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hense_bausteinpruefung_31012020", "..\hense_bausteinpruefung_31012020\hense_bausteinpruefung_31012020.csproj", "{85D8BB91-20DB-4E07-A081-D061BF077E32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hense_bausteinpruefung_31012020", "hense_bausteinpruefung_31012020\hense_bausteinpruefung_31012020.csproj", "{85D8BB91-20DB-4E07-A081-D061BF077E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hense_bausteinpruefung_31012020_2", "..\hense_bausteinpruefung_31012020_2\hense_bausteinpruefung_31012020_2.csproj", "{C64EF1EA-AD9E-45E9-AB06-FCCBC4C775CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hense_bausteinpruefung_31012020_2", "hense_bausteinpruefung_31012020_2\hense_bausteinpruefung_31012020_2.csproj", "{C64EF1EA-AD9E-45E9-AB06-FCCBC4C775CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "..\ClassLib\ClassLib.csproj", "{99237580-ED7F-4476-B73D-4BAFA4989F38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "ClassLib\ClassLib.csproj", "{99237580-ED7F-4476-B73D-4BAFA4989F38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

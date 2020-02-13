@@ -36,6 +36,7 @@ namespace streamschreiber_3
             Console.CursorVisible = false;
             while (looping)
             {
+               
                 Console.Clear();
                 Console.WriteLine("(N)eue Datei");
                 Console.WriteLine("(T)ext an Datei anhängen");
