@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfVokabeln.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Canvas>
+            <Label Canvas.Left="50" Canvas.Top="20" Width="100">Frage</Label>
+            <TextBox Name="TbFrage" IsEnabled="False" Canvas.Left="50" Canvas.Top="50" Width="100"></TextBox>
+            <Label Canvas.Left="250" Canvas.Top="20" Width="100">Antwort</Label>
+            <TextBox Name="TbAntwort" IsEnabled="True" Canvas.Left="250" Canvas.Top="50" Width="100"></TextBox>
+            <Button Name="BtOk" Canvas.Left="400" Canvas.Top="50" Width="50" Click="BtOk_Click">OK</Button>
+            <Label Name="LbErg" Canvas.Left="50" Canvas.Top="150" Width="250"/>
+            <Button Name="BtStart" Canvas.Left="50" Canvas.Top="100" Width="50" Click="BtStart_Click">Start</Button>
+            <ComboBox x:Name ="cbfrage" Canvas.Left="50" Canvas.Top="200" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Name="cbfdeu" Selector.IsSelected="true">deutsch</ComboBoxItem>
+                <ComboBoxItem Name="cbfspa">spanisch</ComboBoxItem>
+                <ComboBoxItem Name="cbfeng">englisch</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name ="cbantwort" Canvas.Left="200" Canvas.Top="200" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Name="cbadeu">deutsch</ComboBoxItem>
+                <ComboBoxItem Name="cbaspa" Selector.IsSelected="True">spanisch</ComboBoxItem>
+                <ComboBoxItem Name="cbaeng">englisch</ComboBoxItem>
+            </ComboBox>
+            <Button Name="BtHin" Canvas.Left="50" Canvas.Top="250" Width="120" Click="BtHin_Click">Neue Vokabel</Button>
+            <Button Canvas.Left="170" Canvas.Top="250" Width="120" Name="serialize" Click="serialize_Click">Serialize</Button>
+            <Button Canvas.Left="300" Canvas.Top="250" Width="120" Name="deserialize" Click="deserialize_Click">DeSerialize</Button>
+        </Canvas>
+    </StackPanel>
+</Window>
