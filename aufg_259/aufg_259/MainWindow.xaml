@@ -3,9 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
       xmlns:local="clr-namespace:aufg_259"
       mc:Ignorable="d"
-     Title="Währungsrechner" Height="450" Width="800"
+     Title="Währungsrechner" Height="650" Width="800"
      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -25,46 +26,93 @@
         
         </ResourceDictionary>
     </Window.Resources>
- 
-            <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+    <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+        <materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel  MinWidth="212">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                              DockPanel.Dock="Top"
+                              HorizontalAlignment="Right" Margin="16"
+                              IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                <Menu>
+                    <Menu.Resources>
+                       
+                    </Menu.Resources>
+                    <Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>
+                    <MenuItem Header="Item 1">
+                        <MenuItem Header="Sub Item 1" Command="New" ></MenuItem>
+                      
+                        <MenuItem Header="Sub Item 3" />
+                    </MenuItem>
 
-        <DockPanel  LastChildFill="True">
-            <UniformGrid Columns="2" DockPanel.Dock="Top" >
-                <TextBlock Margin="12, 20, 1, 1">Ausgangswährung:</TextBlock>
-                <TextBlock Margin="8, 20, 1, 1">Zielwährung:</TextBlock>
-            </UniformGrid>
+
+                </Menu>
+
+            </DockPanel>
+        </materialDesign:DrawerHost.LeftDrawerContent>
+
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                      Mode="PrimaryMid" DockPanel.Dock="Top">
+                <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Left" IsChecked="False"
+                                  x:Name="MenuToggleButton" />
+            </materialDesign:ColorZone>
+            <Grid x:Name="LayoutRoot" Grid.Row="1" Margin="20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                  
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            
          
-            <Button Grid.Column="1" Name="Clear_Button" DockPanel.Dock="Bottom"
+                <TextBlock Grid.Column="0" Margin="0">Ausgangswährung:</TextBlock>
+                <TextBlock Grid.Column="1" Margin="0">Zielwährung:</TextBlock>
+           
+         
+            <Button  Grid.Row="3" Grid.Column="1" Name="Clear_Button" 
              Margin="10, 3, 10, 3" Click="Button_Click"
            Content="Eingabe zurücksetzen">
             </Button>
-           
+  
+            <Button Grid.Column="2" Grid.Row="3" x:Name="Add_Button" DockPanel.Dock="Bottom" Margin="10,3,10,3" Click="Add_Button_Click" Content="Währung hinzufügen"></Button>
 
-            <Button Grid.Column="2" x:Name="Add_Button" DockPanel.Dock="Bottom" Margin="10,3,10,3" Click="Add_Button_Click" Content="Währung hinzufügen"></Button>
-            <DockPanel  DockPanel.Dock="Bottom" LastChildFill="True">
-                <TextBlock DockPanel.Dock="Left" Margin="10, 3, 3, 3"
-                VerticalAlignment="Center">Betrag:</TextBlock>
-                <TextBox DockPanel.Dock="Left"  Name="Input_TextBox" Margin="3"
-                 Width="70" IsEnabled="True" Background="LightGray"></TextBox>
-                <TextBlock DockPanel.Dock="Left" Margin="3"
-               VerticalAlignment="Center">Ergebnis:</TextBlock>
-                <TextBox  Name="Output_TextBox" Margin="3, 3, 10, 3"
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="10"
+                VerticalAlignment="top">Betrag:</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="0" Height="28px"  Name="Input_TextBox" Margin="10"
+                 Width="auto" IsEnabled="True" Background="LightGray"></TextBox>
+                <TextBlock Grid.Row="1" Grid.Column="1"  Margin="10"
+               VerticalAlignment="top">Ergebnis:</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="28px" Name="Output_TextBox" Margin="10"
                  IsEnabled="True" Background="LightGray"></TextBox>
-            </DockPanel>
-            <Button Name="Calc_Button" DockPanel.Dock="Bottom"
+           
+            <Button Grid.Row="3" Grid.Column="0" Name="Calc_Button" 
             Margin="10, 3, 10, 3" Click="Button_Click"
             Content="Umrechnung durchführen">
             </Button>
-            <UniformGrid Columns="2">
-                <ListBox Name="Source_ListBox"  Margin="10, 0, 3, 6"  >
+            
+                <ListBox Grid.Column="0" Name="Source_ListBox"  Margin="0,15"  >
                 </ListBox>
-                <ListBox Name="Target_ListBox"  Margin="3, 0, 10, 6" >
+                <ListBox Grid.Column="1" Name="Target_ListBox"  Margin="0,15" >
                 </ListBox>
-            </UniformGrid>
-        </DockPanel>
+     
+     
     </Grid>
+            </Grid>
+    </materialDesign:DrawerHost>
+
 </Window>

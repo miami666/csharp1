@@ -26,12 +26,14 @@ namespace WpfVokabeln
     {
         public string TbFrage;
         public string TbAntwort;
-        public Vokabeltest(string frage,string antwort)
+        public Vokabeltest() {
+        }
+        public Vokabeltest(string frage, string antwort)
         {
             TbFrage = frage;
             TbAntwort = antwort;
         }
-    }
+    } 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -47,6 +49,7 @@ namespace WpfVokabeln
         string dateia = "es";
         int durch = 0;
         int max = 0;
+        Vokabeltest vt = new Vokabeltest();
 
         public MainWindow()
         {
@@ -54,9 +57,9 @@ namespace WpfVokabeln
             Db db = new Db();
             conn = db.verbind();
         }
-        
 
-        
+
+
 
         private void weiter()
         {
@@ -74,7 +77,7 @@ namespace WpfVokabeln
             else
             {
 
-                zufall = r.Next(0, frage.Count);            
+                zufall = r.Next(0, frage.Count);
                 TbFrage.Text = "" + frage[zufall];
                 TbAntwort.Text = "";
             }
@@ -89,8 +92,8 @@ namespace WpfVokabeln
                 MessageBox.Show("Richtig", "Vokabel");
                 frage.RemoveAt(zufall);
                 antwort.RemoveAt(zufall);
-              
-                
+
+
             }
             else
                 MessageBox.Show("Falsch, richtige Antwort" +
@@ -98,24 +101,24 @@ namespace WpfVokabeln
                     "'", "Vokabel");
             weiter();
             if (zufall > 0)
-                    TbFrage.Text = "" + frage[zufall];
+                TbFrage.Text = "" + frage[zufall];
 
-                    TbAntwort.Focus();
-                    LbErg.Content = "Versuch " + durch + " von " + max;
+            TbAntwort.Focus();
+            LbErg.Content = "Versuch " + durch + " von " + max;
         }
 
         private void BtStart_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                
+
                 string strSQL = "SELECT * FROM vokabeln";
                 MySqlCommand cmd = new MySqlCommand(strSQL, conn);
-                
+
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (dateif == "de") 
+                    if (dateif == "de")
                         frage.Add(reader["deutsch"]);
                     else if (dateif == "es")
                         frage.Add(reader["spanisch"]);
@@ -176,16 +179,29 @@ namespace WpfVokabeln
                 TbAntwort = TbAntwort.Text
 
             };
-            IFormatter formatter = new BinaryFormatter();
-            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "vokabeltest.bin");
-            stream = new FileStream(path2, FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, vt);
-            stream.Close();
+            /*          IFormatter formatter = new BinaryFormatter();
+                      string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "vokabeltest.bin");
+                      stream = new FileStream(path2, FileMode.Create, FileAccess.Write, FileShare.None);
+                      formatter.Serialize(stream, vt);*/
+
+            XmlSerializer xml_serializer =
+        new XmlSerializer(typeof(Vokabeltest));
+            using (StringWriter string_writer = new StringWriter())
+            {
+                // Serialize.
+                xml_serializer.Serialize(string_writer, vt);
+                tbserialize.Text = string_writer.ToString();
+            }
 
         }
         private void deserialize_Click(object sender, RoutedEventArgs e)
         {
+            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "vokabeltest.bin");
+            Stream stream = new FileStream(path2, FileMode.Open);
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Deserialize(stream);
 
         }
     }
+
 }

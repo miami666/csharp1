@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfVokabeln", "WpfVokabeln\WpfVokabeln.csproj", "{F6E0BDCE-31A1-412B-9D9B-E129FA1B30B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "binaere_serialisierung", "..\..\binaere_serialisierung\binaere_serialisierung\binaere_serialisierung.csproj", "{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{F6E0BDCE-31A1-412B-9D9B-E129FA1B30B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6E0BDCE-31A1-412B-9D9B-E129FA1B30B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E0BDCE-31A1-412B-9D9B-E129FA1B30B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2020235-56CD-4D18-9AA1-15D92824E94F}
 	EndGlobalSection
 EndGlobal
