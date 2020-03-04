@@ -90,8 +90,8 @@ namespace WpfVokabeln
             if (TbAntwort.Text == (string)antwort[zufall])
             {
                 MessageBox.Show("Richtig", "Vokabel");
-                frage.RemoveAt(zufall);
-                antwort.RemoveAt(zufall);
+               // frage.RemoveAt(zufall);
+               // antwort.RemoveAt(zufall);
 
 
             }
@@ -176,9 +176,10 @@ namespace WpfVokabeln
             Vokabeltest vt = new Vokabeltest(TbFrage.Text, TbAntwort.Text)
             {
                 TbFrage = TbFrage.Text,
-                TbAntwort = TbAntwort.Text
+                TbAntwort = (string)antwort[zufall]
 
             };
+            
             /*          IFormatter formatter = new BinaryFormatter();
                       string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "vokabeltest.bin");
                       stream = new FileStream(path2, FileMode.Create, FileAccess.Write, FileShare.None);
@@ -186,22 +187,50 @@ namespace WpfVokabeln
 
             XmlSerializer xml_serializer =
         new XmlSerializer(typeof(Vokabeltest));
-            using (StringWriter string_writer = new StringWriter())
+            /*        using (StringWriter string_writer = new StringWriter())
+                    {
+                        // Serialize.
+                        xml_serializer.Serialize(string_writer, vt);
+                        tbserialize.Text = string_writer.ToString();
+                    }*/
+            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "vokabeltest.xml");
+            using (TextWriter txtwriter = new StreamWriter(path2))
             {
-                // Serialize.
-                xml_serializer.Serialize(string_writer, vt);
-                tbserialize.Text = string_writer.ToString();
-            }
+                xml_serializer.Serialize(txtwriter, vt);
 
+            }
         }
         private void deserialize_Click(object sender, RoutedEventArgs e)
         {
-            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "vokabeltest.bin");
-            Stream stream = new FileStream(path2, FileMode.Open);
-            IFormatter formatter = new BinaryFormatter();
-            formatter.Deserialize(stream);
+            /*            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "vokabeltest.bin");
+                        Stream stream = new FileStream(path2, FileMode.Open);
+                        IFormatter formatter = new BinaryFormatter();
+                        formatter.Deserialize(stream);*/
+
+
+            XmlSerializer deserializer = new XmlSerializer(typeof(Vokabeltest));
+            string path2 = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "vokabeltest.xml");
+            using (TextReader reader = new StreamReader(path2))
+            {
+
+                object obj = deserializer.Deserialize(reader);
+                Vokabeltest XmlData = (Vokabeltest)obj;
+                TbFrage.Text = XmlData.TbFrage;
+
+                TbAntwort.Text = XmlData.TbAntwort;
+                string sql = "Select * from vokabeln where deutsch=@param";
+                MySqlCommand select = new MySqlCommand(sql, conn);
+                select.Parameters.AddWithValue("@param", TbFrage.Text);
+                MySqlDataReader mysqlreader = select.ExecuteReader();
+                mysqlreader.Close();
+
+            }
+            
+
+
 
         }
+            
     }
 
 }

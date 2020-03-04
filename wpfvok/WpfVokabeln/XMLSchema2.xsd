@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+<xs:element name="Root">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="Kunden">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Kunde" type="KundenTyp" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Auftraege">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Auftrag" type="Auftragtyp" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:key name="KnrKey">
+    <xs:selector xpath="Kunden/Kunde"/>
+    <xs:field xpath="@Knr"/>
+  </xs:key>
+  <xs:keyref name="KnrKeyref" refer="KnrKey">
+    <xs:selector xpath="Auftraege/Auftrag"/>
+    <xs:field xpath="Knr"/>
+  </xs:keyref>
+</xs:element>
+  <xs:complexType name="KundenTyp">
+    <xs:sequence>
+      <xs:element name="Firma" type="xs:string"></xs:element>
+      <xs:element name="Kontakt" type="xs:string"></xs:element>
+      <xs:element name="Telefon" type="xs:string"></xs:element>
+      <xs:element name="Adresse" type="AdresseTyp"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="Knr" type="xs:token"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="AdresseTyp">
+    <xs:sequence>
+      <xs:element name="strasse" type="xs:string"></xs:element>
+      <xs:element name="plz" type="xs:string"></xs:element>
+      <xs:element name="ort" type="xs:string"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="Knr" type="xs:token"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="Auftragtyp">
+    <xs:sequence>
+      <xs:element name="Knr" type="xs:token"></xs:element>
+      <xs:element name="MitarbeiterID" type="xs:token"></xs:element>
+      <xs:element name="Auftragsdatum" type="xs:dateTime"></xs:element>
+      <xs:element name="Versandinfo" type="Versandtyp"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Versandtyp">
+    <xs:sequence>
+      <xs:element name="Versandnummer" type="xs:integer"></xs:element>
+    
+      <xs:element name="Versanddatum" type="xs:dateTime"></xs:element>
+   
+    </xs:sequence>
+    
+  </xs:complexType>
+
+</xs:schema>

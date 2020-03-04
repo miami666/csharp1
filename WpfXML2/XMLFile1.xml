@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Kunden>
+    <Kunde Knr="GREAL">
+      <Firma>Abc Trade</Firma>
+      <Kontakt>Hannes Wader</Kontakt>
+      <Telefon>0000000</Telefon>
+      <Adresse Knr="GREAL">
+        <strasse>Parkstrasse 666</strasse>
+        <plz>666</plz>
+        <ort>Hell</ort>
+      </Adresse>
+    </Kunde>
+  </Kunden>
+  <Auftraege>
+    <Auftrag>
+      <Knr>GREAL</Knr>
+      <MitarbeiterID>123</MitarbeiterID>
+      <Auftragsdatum>2020-03-03T00:00:00</Auftragsdatum>
+      <Versandinfo>
+      <Versandnummer>1</Versandnummer>
+      <Versanddatum>2020-03-04T00:00:00</Versanddatum>
+      </Versandinfo>
+    </Auftrag>
+  </Auftraege>
+</Root>

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfVokabeln", "WpfVokabeln\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "binaere_serialisierung", "..\..\binaere_serialisierung\binaere_serialisierung\binaere_serialisierung.csproj", "{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfXML1", "..\..\WpfXML1\WpfXML1.csproj", "{4020376C-4293-4C46-9052-08E42570E2D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mysql_3", "..\..\mysql_3\mysql_3.csproj", "{B0D51659-6FC8-4D2D-81F5-C94774A9486E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC5A9C0-C0FD-439E-8A31-22A2466727F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4020376C-4293-4C46-9052-08E42570E2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4020376C-4293-4C46-9052-08E42570E2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4020376C-4293-4C46-9052-08E42570E2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4020376C-4293-4C46-9052-08E42570E2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
