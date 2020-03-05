@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfXML1", "..\..\WpfXML1\Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mysql_3", "..\..\mysql_3\mysql_3.csproj", "{B0D51659-6FC8-4D2D-81F5-C94774A9486E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfXML2", "..\..\WpfXML2\WpfXML2.csproj", "{F62B0ED1-10C3-42C4-94FE-1084794FC928}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0D51659-6FC8-4D2D-81F5-C94774A9486E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62B0ED1-10C3-42C4-94FE-1084794FC928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62B0ED1-10C3-42C4-94FE-1084794FC928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62B0ED1-10C3-42C4-94FE-1084794FC928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62B0ED1-10C3-42C4-94FE-1084794FC928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
