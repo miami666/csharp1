@@ -24,7 +24,7 @@ namespace XML03
             string sql = null;
 
             int alter = 0;
-            int telefon = 0;
+            string telefon = null;
             string vorname = null;
             string zuname = null;
         
@@ -40,7 +40,7 @@ namespace XML03
             for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
             {
                 vorname = ds.Tables[0].Rows[i].ItemArray[0].ToString();
-                telefon = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[1]);
+                telefon = ds.Tables[0].Rows[i].ItemArray[1].ToString();
                 zuname = ds.Tables[0].Rows[i].ItemArray[2].ToString();
                 alter = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[3]);
                 
