@@ -8,19 +8,17 @@ using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System.Xml;
 using System.Data;
-
 namespace XML04
 {
     class Person
     {
         public string Vorname { get; set; }
+        public string Telefon { get; set; }
         public string Zuname { get; set; }
         public int Alter { get; set; }
         public string Ort { get; set; }
         public string Strasse { get; set; }
-
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -36,10 +34,7 @@ namespace XML04
             string zuname = null;
             string ort = null;
             string strasse = null;
-
-
             connetionString = "server = localhost; uid = root; password =; database = personen; ";
-
             connection = new MySqlConnection(connetionString);
             connection.Open();
             using (MySqlCommand cmd = new MySqlCommand("CREATE TABLE IF NOT EXISTS person (" +
@@ -55,33 +50,30 @@ namespace XML04
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
             }
-
-
-
-
-
             XmlDocument doc = new XmlDocument();
             doc.Load("../../personen.xml");
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/Personen/Person");
             foreach (XmlNode node in nodes)
             {
                 Person person = new Person();
+                person.Vorname = node.SelectSingleNode("Vorname").InnerText;
+                person.Telefon = node.SelectSingleNode("Telefon").InnerText;
+                person.Zuname = node.SelectSingleNode("Zuname").InnerText;
+                person.Alter = Convert.ToInt32(node.SelectSingleNode("Alter").InnerText);
+                person.Ort = node.SelectSingleNode("Adresse/@Ort").InnerText;
+                person.Strasse = node.SelectSingleNode("Adresse/@Strasse").InnerText;
+                
                 vorname = node.SelectSingleNode("Vorname").InnerText;
                 telefon = node.SelectSingleNode("Telefon").InnerText;
                 zuname = node.SelectSingleNode("Zuname").InnerText;
                 alter = Convert.ToInt32(node.SelectSingleNode("Alter").InnerText);
                 ort = node.SelectSingleNode("Adresse/@Ort").InnerText;
                 strasse = node.SelectSingleNode("Adresse/@Strasse").InnerText;
-
-
                 sql = "insert into person(vorname,telefon,zuname,alterperson,ort,strasse) values('" + vorname + "','" + telefon + "','" + zuname + "'," + alter + ",'" + ort + "','" + strasse + "')";
                 command = new MySqlCommand(sql, connection);
                 adpter.InsertCommand = command;
                 adpter.InsertCommand.ExecuteNonQuery();
-
-
             }
-
             connection.Close();
         }
     }

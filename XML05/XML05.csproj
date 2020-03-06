@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAEEEA77-3B67-4D6D-81BB-452603E9A148}</ProjectGuid>
+    <ProjectGuid>{6D9018BE-BAE0-41AD-9386-782F4E4C85C5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XML04</RootNamespace>
-    <AssemblyName>XML04</AssemblyName>
+    <RootNamespace>XML05</RootNamespace>
+    <AssemblyName>XML05</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

@@ -30,7 +30,7 @@ namespace xmlDatagrid
         {
             DataSet data = new DataSet();
             data.ReadXml("../../personen.xml");
-            dgSimple.ItemsSource = data.Tables[0].DefaultView;
+            dg.ItemsSource = data.Tables[0].DefaultView;
 
         }
     }

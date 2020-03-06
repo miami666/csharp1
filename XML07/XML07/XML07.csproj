@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAEEEA77-3B67-4D6D-81BB-452603E9A148}</ProjectGuid>
+    <ProjectGuid>{77C80A77-C239-4FB6-857F-30C5F4227C0F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XML04</RootNamespace>
-    <AssemblyName>XML04</AssemblyName>
+    <RootNamespace>XML07</RootNamespace>
+    <AssemblyName>XML07</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

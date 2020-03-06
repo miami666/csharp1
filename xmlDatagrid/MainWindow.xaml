@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dgSimple" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue"></DataGrid>
+        <DataGrid Name="dg" Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue"></DataGrid>
         <Button x:Name="load" Height="20" Width="100" VerticalAlignment="Bottom" Margin="10" Click="load_Click">XML Laden</Button>
 
     </Grid>
