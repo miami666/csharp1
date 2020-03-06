@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Personen>
+  <Person>
+    <Vorname>Manfred</Vorname>
+    <Telefon>040333333</Telefon>
+    <Zuname>Fischer</Zuname>
+    <Alter>45</Alter>
+    <Adresse Ort="Bonn" Strasse="Neuestr.34"></Adresse>
+  </Person>
+  <Person>
+    <Vorname>Ilse</Vorname>
+    <Telefon>040333333</Telefon>
+    <Zuname>Bilse</Zuname>
+    <Alter>99</Alter>
+    <Adresse Ort="Hamburg" Strasse="Meyerstr 55"></Adresse>
+  </Person>
+</Personen>

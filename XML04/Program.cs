@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 using System.Xml;
 using System.Data;
 
-namespace XML03
+namespace XML04
 {
     class Person
     {
@@ -29,25 +29,18 @@ namespace XML03
             MySqlConnection connection;
             MySqlCommand command;
             MySqlDataAdapter adpter = new MySqlDataAdapter();
-            DataSet ds = new DataSet();
-            XmlReader xmlFile;
             string sql = null;
-
             int alter = 0;
             string telefon = null;
             string vorname = null;
             string zuname = null;
             string ort = null;
             string strasse = null;
-        
+
 
             connetionString = "server = localhost; uid = root; password =; database = personen; ";
 
             connection = new MySqlConnection(connetionString);
-
-     /*       xmlFile = XmlReader.Create("../../personen.xml", new XmlReaderSettings());
-            ds.ReadXml(xmlFile);
-            int i = 0;*/
             connection.Open();
             using (MySqlCommand cmd = new MySqlCommand("CREATE TABLE IF NOT EXISTS person (" +
             "id INT AUTO_INCREMENT," +
@@ -62,26 +55,6 @@ namespace XML03
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
             }
-                
-           /* for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-            {
-                vorname = ds.Tables[0].Rows[i].ItemArray[0].ToString();
-                telefon = ds.Tables[0].Rows[i].ItemArray[1].ToString();
-                zuname = ds.Tables[0].Rows[i].ItemArray[2].ToString();
-                alter = Convert.ToInt32(ds.Tables[0].Rows[i].ItemArray[3]);
-
-
-
-
-
-                sql = "insert into person(vorname,telefon,zuname,alterperson) values('" + vorname + "','"+ telefon + "','" + zuname + "',"+alter+")";
-                command = new MySqlCommand(sql, connection);
-                adpter.InsertCommand = command;
-                adpter.InsertCommand.ExecuteNonQuery();
-            }
-*/
-
-
 
 
 
@@ -92,6 +65,7 @@ namespace XML03
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/Personen/Person");
             foreach (XmlNode node in nodes)
             {
+                Person person = new Person();
                 vorname = node.SelectSingleNode("Vorname").InnerText;
                 telefon = node.SelectSingleNode("Telefon").InnerText;
                 zuname = node.SelectSingleNode("Zuname").InnerText;
@@ -100,14 +74,14 @@ namespace XML03
                 strasse = node.SelectSingleNode("Adresse/@Strasse").InnerText;
 
 
-                sql = "insert into person(vorname,telefon,zuname,alterperson,ort,strasse) values('" + vorname + "','" + telefon + "','" + zuname + "'," + alter +",'" + ort+ "','"+strasse+"')";
+                sql = "insert into person(vorname,telefon,zuname,alterperson,ort,strasse) values('" + vorname + "','" + telefon + "','" + zuname + "'," + alter + ",'" + ort + "','" + strasse + "')";
                 command = new MySqlCommand(sql, connection);
                 adpter.InsertCommand = command;
                 adpter.InsertCommand.ExecuteNonQuery();
 
 
             }
-            
+
             connection.Close();
         }
     }
